@@ -1,6 +1,6 @@
 Assignment 2 overview:
 
-Employee:
+abstract Employee:
 attributes:
     ID (String),
     name
@@ -14,7 +14,7 @@ constructor:
     system.out: "Employee <ID> was registered successfully."
 
 different types of employees:
-    Manager
+    Manager extend employee
         attributes:
             degree    (BSc., MSc. and PhD)
                 Bonus: 10%,  20%  and 35%
@@ -27,7 +27,7 @@ different types of employees:
         methods:
             @override
             getInfo: <degree> <name>’s gross salary is <gross_salary> SEK per month. Dept: <department>
-    Intern positions extends employee?
+    Intern positions extends employee
         attributes:
             GPA: (integer between 0 - 10.)
                 GPA less than or equal to 5: then he/she will not receive a gross salary (i.e., it will be zero).
@@ -35,10 +35,12 @@ different types of employees:
                 GPA greater than or equal to 8: then he/she will receive the full gross salary, plus a benefit of 1,000 SEK
         methods:
             @override:
+            getInfo: <name>’s gross salary is <gross_salary> SEK per month. GPA: <gpa>
 
-  /                                                \
+
+  /------------------------------------------------\
 <(!Be careful not to lose the original gross salary!)>
-  \                                                /
+  \________________________________________________/
 
 
 
