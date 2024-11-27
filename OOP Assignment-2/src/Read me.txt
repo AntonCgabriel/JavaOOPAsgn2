@@ -1,6 +1,6 @@
 Assignment 2 overview:
 
-abstract Employee:
+Employee:
 attributes:
     ID (String),
     name
