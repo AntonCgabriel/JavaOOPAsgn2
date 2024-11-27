@@ -1,0 +1,88 @@
+Assignment 2 overview:
+
+Employee:
+attributes:
+    ID (String),
+    name
+    gross salary - specified during the Employee’s creation and can be later retrieved
+    // The name and salary of an employee can be changed, but their ID cannot change.
+    // Two employees are equals if they have the same ID.
+methods:
+    getInfo: <name>’s gross salary is <gross_salary> SEK per month.
+    net salary getter: netSalary = grossSalary - (grossSalary * 0.1)
+constructor:
+    system.out: "Employee <ID> was registered successfully."
+
+different types of employees:
+    Manager
+        attributes:
+            degree    (BSc., MSc. and PhD)
+                Bonus: 10%,  20%  and 35%
+        methods:
+            @override
+            getInfo: <degree> <name>’s gross salary is <gross_salary> SEK per month.
+    Director extend manager
+        attribute:
+            department (Human Resources, Technical, and Business.) also adds 5k on top of salary
+        methods:
+            @override
+            getInfo: <degree> <name>’s gross salary is <gross_salary> SEK per month. Dept: <department>
+    Intern positions extends employee?
+        attributes:
+            GPA: (integer between 0 - 10.)
+                GPA less than or equal to 5: then he/she will not receive a gross salary (i.e., it will be zero).
+                GPA between 5 and 8: then he/she will receive his/her full gross salary.
+                GPA greater than or equal to 8: then he/she will receive the full gross salary, plus a benefit of 1,000 SEK
+        methods:
+            @override:
+
+  /                                                \
+<(!Be careful not to lose the original gross salary!)>
+  \                                                /
+
+
+
+                  Upcoming issues
+
+Remove employees to keep my payroll updated (1.4)
+    Target ID, remove object and print the message: "Employee <ID> was successfully removed.".
+
+See an overview of all employees’ information (1.5 and 1.6)
+    All registered employees:
+    <employee_string>
+    <employee_string>
+    <employee_string>
+    <employee_string>
+
+Total paid in net salaries to see my expenses with employees
+    print the sum of all net salaries for all employees.
+
+Retrieve employees sorted by gross salary
+    Employees sorted by gross salary (ascending order):
+    <employee_string>
+    <employee_string>
+    <employee_string>
+    <employee_string>
+
+Change information of employees so we can keep their personal information updated (1.9)
+    Regular employees (applicable to all): Can change name and gross salary.
+    Manager: Can change his/her degree.
+    Director: Can change his/her degree and department.
+    Intern: Can change his/her GPA.
+
+Show the number of employees per degree (1.10)
+    Academic background of employees:
+    BSc: => <number>
+    MSc: => <number>
+    PhD: => <number>
+
+Specific employee not found or not registered yet (2.1)
+    Use and handle Exceptions in your code.
+    Example with the following message: "Employee <ID> was not registered yet."
+
+Factory of Employees (DT2)
+    A clean solution is to apply a design pattern that creates an abstraction whose
+    single responsibility is to create the correct instances of subclasses to be used.
+
+
+
