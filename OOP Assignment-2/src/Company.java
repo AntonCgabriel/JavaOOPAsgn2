@@ -19,15 +19,13 @@ public class Company {
         return EmployeeList.size();
     }
 
-    public updateName(String id, String newName);{
+    public void updateName(String id, String newName){
         Employee employee = accessEmployee(id);
         employee.name = newName;
         addEmployee(id, employee);
-
-
     }
 
-    public updateSalary(String id, double newSalary);{
+    public void updateSalary(String id, double newSalary){
         Employee employee = accessEmployee(id);
         employee.grossSalary = newSalary;
         addEmployee(id, employee);
