@@ -7,8 +7,8 @@ public class Company{
 HashMap<String, Employee> employeeList = new HashMap<>();
 
 public void createEmployee(String id, String name, Double grossSalary){
-    Employee employee = new Employee(id, name, grossSalary);
-    employeeList.put(employee.getId(), employee);
+    Employee newEmployee = new Employee(id, name, grossSalary);
+    employeeList.put(newEmployee.getId(), newEmployee);
     System.out.println(employeeList);
 }
 
@@ -17,10 +17,9 @@ public void removeEmployee(String id){
 }
 
 public String printEmployee(String id){
-    Employee gotEmployee = employeeList.get(id);
-    String employeeId = gotEmployee.getId();
-    String employeeName = gotEmployee.getName();
-    Double employeeGrossSalary = gotEmployee.getGrossSalary();
+    Employee selectedEmployee = employeeList.get(id);
+    String employeeName = selectedEmployee.getName();
+    double employeeGrossSalary = selectedEmployee.getGrossSalary();
     String employeeInfo = (employeeName + "'s gross salary is " + employeeGrossSalary + " SEK per month.");
     System.out.print(employeeInfo);
     return employeeInfo;

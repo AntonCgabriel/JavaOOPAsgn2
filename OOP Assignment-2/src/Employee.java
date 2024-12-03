@@ -9,8 +9,7 @@ public class Employee{
         this.id = id;
         this.name = name;
         this.grossSalary = truncate(grossSalary);
-        this.netSalary = this.grossSalary - (this.grossSalary * 0.1);
-        this.netSalary = truncate(this.netSalary);
+        this.netSalary = truncate(this.grossSalary - (this.grossSalary * 0.1));
         System.out.println("Employee "+ this.id + " was registered successfully.");
     }
 
