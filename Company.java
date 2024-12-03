@@ -32,22 +32,22 @@ public void updateEmployeeName(String id, String newName){
 
 }
 
-public void updateEmployeeSalary(String id, Double newGrossSalary){
+public void updateGrossSalary(String id, Double newGrossSalary){
     Employee gotEmployee = employeelist.get(id);
     gotEmployee.setGrossSalary(newGrossSalary);
 }
 
-public void getTotalGrossSalary(){
-    double totalGrossSalary = 0;
-
-    //iterates over all entries in the map and runs function for each entry
-    for (Map.Entry<String, Employee> entry : employeelist.entrySet()){
-        Employee employee = entry.getValue();
-
-        totalGrossSalary += employee.getGrossSalary();
-    }
-    System.out.print(totalGrossSalary);
-}
+//public void getTotalGrossSalary(){
+//    double totalGrossSalary = 0;
+//
+//    //iterates over all entries in the map and runs function for each entry
+//    for (Map.Entry<String, Employee> entry : employeelist.entrySet()){
+//        Employee employee = entry.getValue();
+//
+//        totalGrossSalary += employee.getGrossSalary();
+//    }
+//    System.out.print(totalGrossSalary);
+//}
 
 public void getTotalNetSalary(){
     double totalNetSalary = 0;
@@ -74,5 +74,51 @@ public void printAllEmployees(){
         }
     System.out.print(allEmployeesInfo);
     }
+
+    public void getNetSalary(String id){
+        Employee gotEmployee = employeelist.get(id);
+        gotEmployee.getNetSalary();
+
+
+    }
+
+    public void updateInternGPA(){
+
+
+    }
+
+    public void updateManagerDegree(){
+
+        
+    }
     
+    public void updateDirectorDept(){
+
+        
+    }
+
+    public void promoteToManager(){
+
+        
+    }
+
+    public void promoteToDirector(){
+
+        
+    }
+
+    public void promoteToIntern(){
+
+        
+    }
+    
+    public void printSortedEmployees(){
+
+
+    }
+
+    public void mapEachDegree(){
+
+        
+    }
 }
