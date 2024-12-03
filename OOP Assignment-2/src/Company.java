@@ -1,7 +1,7 @@
 import java.util.HashMap;
 
 public class Company {
-    HashMap<String, Employee> EmployeeList = new HashMap<>();
+    private HashMap<String, Employee> EmployeeList = new HashMap<>();
     
     public void registerEmployee(String name){
         Employee employee = new Employee(name);
@@ -14,8 +14,7 @@ public class Company {
     }
 
     public Employee retriveEmployee(String id){
-        Employee employee = EmployeeList.get(id);
-        return employee;
+        return EmployeeList.get(id);
     }
 
     public void updateName(String id, String newName){
@@ -31,5 +30,8 @@ public class Company {
         EmployeeList.put(id, employee);
     }
 
+    public int getNrEmployees(){
+        return EmployeeList.size();
+    }
 
 }
