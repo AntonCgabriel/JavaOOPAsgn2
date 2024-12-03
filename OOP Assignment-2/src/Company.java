@@ -35,18 +35,6 @@ public class Company {
         return EmployeeList.size();
     }
 
-
-    public void updateName(String id, String newName){
-        Employee employee = accessEmployee(id);
-        employee.name = newName;
-        addEmployee(id, employee);
-    }
-
-    public void updateSalary(String id, double newSalary){
-        Employee employee = accessEmployee(id);
-        employee.grossSalary = newSalary;
-        addEmployee(id, employee);
-
     public void calculateTotalGrossSalary(){
         double totalGrossSalary = 0;
 
@@ -56,6 +44,6 @@ public class Company {
             totalGrossSalary += salary;
         }
         System.out.println("Total Gross salary is " + totalGrossSalary);
-
+    }
 
 }
