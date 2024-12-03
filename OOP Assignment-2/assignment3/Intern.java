@@ -7,9 +7,8 @@ public class Intern extends Employee {
     double gpaSalary;
     int gpa;
 
-    public Intern(String name) {
-        super(name);
-        id = generateID();
+    public Intern(String id, String name, Double grossSalary) {
+        super(id, name, grossSalary);
         System.out.println("Employee " + id + " was registered successfully.");
         int newGpa = 0;
         setGpa(newGpa);
