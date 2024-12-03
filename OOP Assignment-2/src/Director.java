@@ -1,4 +1,4 @@
-import assignment3.Manager;
+//import assignment3.Manager;
 
 public class Director extends Manager {
     private String department;
