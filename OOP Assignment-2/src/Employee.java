@@ -49,4 +49,7 @@ public class Employee {
         employee.grossSalary = newSalary;
         return employee;
     }
+    public double getGrossSalary(Employee employee){
+        return employee.grossSalary;
+    }
 }

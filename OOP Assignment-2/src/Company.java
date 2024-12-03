@@ -11,6 +11,7 @@ public class Company {
 
     public void removeEmployee(String id){
         EmployeeList.remove(id);
+        System.out.println("Employee " + id + " was successfully removed.");
     }
 
     public Employee retriveEmployee(String id){
@@ -33,5 +34,17 @@ public class Company {
     public int getNrEmployees(){
         return EmployeeList.size();
     }
+
+    public void calculateTotalGrossSalary(){
+        double totalGrossSalary = 0;
+
+        for (String i : EmployeeList.keySet()){
+            Employee employee = retriveEmployee(i);
+            double salary = employee.getGrossSalary(employee);
+            totalGrossSalary += salary;
+        }
+        System.out.println("Total Gross salary is " + totalGrossSalary);
+    }
+
 
 }
