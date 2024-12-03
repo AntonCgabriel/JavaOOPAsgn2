@@ -37,4 +37,16 @@ public class Employee {
         double netSalary = grossSalary - ((grossSalary * 0.1));
         return netSalary;
     }
+    public String getId(){
+        return id;
+    }
+    public Employee setName(Employee employee, String newName){
+        employee.name = newName;
+        return employee;
+    }
+
+    public Employee setSallary(Employee employee, double newSalary){
+        employee.grossSalary = newSalary;
+        return employee;
+    }
 }
