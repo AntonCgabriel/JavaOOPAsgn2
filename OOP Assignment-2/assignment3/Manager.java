@@ -1,10 +1,9 @@
-package assignment3;
 public class Manager extends Employee{
     private String educationDegree;
+    protected double bonus;
 
     public Manager(String id, String name, double grossSalary, String educationdegree) {
         super(id, name, grossSalary);
-        Double bonus = 0.0;
         this.educationDegree = educationdegree;
 
         switch (educationdegree){

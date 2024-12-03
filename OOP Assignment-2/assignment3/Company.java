@@ -1,25 +1,24 @@
-package assignment3;
-
+import assignment3.Employee;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Company{
 
-HashMap<String, Employee> employeelist = new HashMap<>();
+HashMap<String, Employee> employeeList = new HashMap<>();
 
 public void createEmployee(String id, String name, Double grossSalary){
     Employee employee = new Employee(id, name, grossSalary);
-    employeelist.put(employee.getId(), employee);
-    System.out.println(employeelist);
+    employeeList.put(employee.getId(), employee);
+    System.out.println(employeeList);
 }
 
 public void removeEmployee(String id){
-    employeelist.remove(id);
+    employeeList.remove(id);
 }
 
 public String printEmployee(String id){
-    Employee gotEmployee = employeelist.get(id);
-    String employeeid = gotEmployee.getId();
+    Employee gotEmployee = employeeList.get(id);
+    String employeeId = gotEmployee.getId();
     String employeeName = gotEmployee.getName();
     Double employeeGrossSalary = gotEmployee.getGrossSalary();
     String employeeInfo = (employeeName + "'s gross salary is " + employeeGrossSalary + " SEK per month.");
@@ -29,21 +28,21 @@ public String printEmployee(String id){
 
 
 public void updateEmployeeName(String id, String newName){
-    Employee gotEmployee = employeelist.get(id);
+    Employee gotEmployee = employeeList.get(id);
     gotEmployee.setName(newName);
 
 }
 
 public void updateGrossSalary(String id, Double newGrossSalary){
-    Employee gotEmployee = employeelist.get(id);
+    Employee gotEmployee = employeeList.get(id);
     gotEmployee.setGrossSalary(newGrossSalary);
 }
 
 public void getTotalGrossSalary(){
     double totalGrossSalary = 0;
 
-    //iterates over all entries in the map and runs function for each entry
-    for (Map.Entry<String, Employee> entry : employeelist.entrySet()){
+    // Iterates over all entries in the map and runs function for each entry
+    for (Map.Entry<String, Employee> entry : employeeList.entrySet()){
         Employee employee = entry.getValue();
 
         totalGrossSalary += employee.getGrossSalary();
@@ -54,8 +53,8 @@ public void getTotalGrossSalary(){
 public void getTotalNetSalary(){
     double totalNetSalary = 0;
 
-    //iterates over all entries in the map and runs function for each entry
-    for (Map.Entry<String, Employee> entry : employeelist.entrySet()){
+    // Iterates over all entries in the map and runs function for each entry
+    for (Map.Entry<String, Employee> entry : employeeList.entrySet()){
         Employee employee = entry.getValue();
 
         totalNetSalary += employee.getNetSalary();
@@ -68,7 +67,7 @@ public void printAllEmployees(){
     String allEmployeesInfo = "All registered employees:";
 
 
-    for (Map.Entry<String, Employee> entry : employeelist.entrySet()){
+    for (Map.Entry<String, Employee> entry : employeeList.entrySet()){
         Employee employee = entry.getValue();
         String id = employee.getId();
         String employeeInfo = printEmployee(id);
@@ -78,7 +77,7 @@ public void printAllEmployees(){
     }
 
     public void getNetSalary(String id){
-        Employee gotEmployee = employeelist.get(id);
+        Employee gotEmployee = employeeList.get(id);
         gotEmployee.getNetSalary();
 
 

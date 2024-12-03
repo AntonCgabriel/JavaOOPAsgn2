@@ -1,6 +1,3 @@
-package assignment3;
-
-
 public class Intern extends Employee {
     String id;
     double grossSalary;
