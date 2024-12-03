@@ -17,7 +17,7 @@ public class Employee {
     }
 
     // Generating unique id based on name
-    private String generateID() {
+    public String generateID() {
         String newId = name.substring(0, 3).toLowerCase();
         int suffix = 101;
         while (usedIds.contains(newId + suffix)){
