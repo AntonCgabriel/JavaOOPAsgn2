@@ -55,9 +55,11 @@ public class Company{
 
     }
 
-    public void updateGrossSalary(String id, Double newGrossSalary){
+    public String updateGrossSalary(String id, Double newGrossSalary){
         Employee gotEmployee = employeeList.get(id);
         gotEmployee.setGrossSalary(newGrossSalary);
+        String test = "Holding";
+        return test;
     }
 
     public void getTotalGrossSalary(){
@@ -105,14 +107,16 @@ public class Company{
 
     }
 
-    public void updateInternGPA(){
+    public void updateInternGPA(String id, int gpa){
 
 
     }
 
-    public void updateManagerDegree(){
 
-
+    public String updateManagerDegree(String id, String degree){
+        String test = "Holding";
+        return test;
+        
     }
 
     public void updateDirectorDept(){
