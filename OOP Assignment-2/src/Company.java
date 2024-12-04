@@ -155,8 +155,8 @@ public class Company{
 
     }
 
-    public void mapEachDegree(){
-
-
+    public Map<String, Integer> mapEachDegree(){
+        Map<String, Integer> mapelimap = new HashMap();
+        return mapelimap;
     }
 }
