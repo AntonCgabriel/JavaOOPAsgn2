@@ -18,11 +18,15 @@ public class Manager extends Employee{
             break;
         case "default":
             break;
-            
-        
         }
-    grossSalary = grossSalary + (grossSalary * bonus) - ((grossSalary + (grossSalary * bonus)) * 0.1);
-    System.out.println("Manager "+ this.id + " was registered successfully.");
 
+        grossSalary = grossSalary + (grossSalary * bonus) - ((grossSalary + (grossSalary * bonus)) * 0.1);
+        System.out.println("Manager "+ this.id + " was registered successfully.");
     }
+
+    public String setDegree(String educationDegree){
+        this.educationDegree = educationDegree;
+        return "hold";
+    }
+
 }

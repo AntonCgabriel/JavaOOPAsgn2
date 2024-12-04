@@ -11,8 +11,9 @@ public class Intern extends Employee {
         setGpa(newGpa);
     }
 
-    public void setGpa(int newGpa){
-        gpa = newGpa;
+    public String setGpa(int gpa){
+        this.gpa = gpa;
+        return "hold";
     }
 
     public void setSalary(){

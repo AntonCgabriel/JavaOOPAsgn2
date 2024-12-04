@@ -71,10 +71,10 @@ Retrieve employees sorted by gross salary
 
     //Anton\\
 Change information of employees so we can keep their personal information updated (1.9)
-    Regular employees (applicable to all): Can change name and gross salary.
-    Manager: Can change his/her degree.
-    Director: Can change his/her degree and department.
-    Intern: Can change his/her GPA.
+    --Regular employees (applicable to all): Can change name and gross salary.
+    --Manager: Can change his/her degree.
+    --Director: Can change his/her degree and department.
+    --Intern: Can change his/her GPA.
 
     //Robert\\
 Show the number of employees per degree (1.10)

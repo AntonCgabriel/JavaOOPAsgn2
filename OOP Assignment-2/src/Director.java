@@ -10,6 +10,11 @@ public class Director extends Manager {
 
         grossSalary = grossSalary + ((grossSalary * bonus) + bossBonus) - ((grossSalary + (grossSalary * bonus) + bossBonus) * 0.1);
         System.out.println("Manager "+ this.id + " was registered successfully.");
-
     }
+
+    public String setDepartment(String department){
+        this.department = department;
+        return "hold";
+    }
+
 }
