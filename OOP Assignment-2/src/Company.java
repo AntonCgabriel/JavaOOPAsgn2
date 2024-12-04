@@ -13,19 +13,19 @@ public void createEmployee(String id, String name, Double grossSalary){
 }
 
 public void createEmployee(String id, String name, Double grossSalary, String degree){
-    Employee newEmployee = new Employee(id, name, grossSalary);
+    Employee newEmployee = new Manager(id, name, grossSalary, degree);
     employeeList.put(newEmployee.getId(), newEmployee);
     System.out.println(employeeList);
 }
 
 public void createEmployee(String id, String name, Double grossSalary, String degree, String faculty){
-    Employee newEmployee = new Employee(id, name, grossSalary);
-    employeeList.put(newEmployee.getId(), newEmployee);
+    Employee newEmployee = new Director(id, name, grossSalary, degree, faculty);
+    employeeList.put(newEmployee.getId(), newEmployee);    
     System.out.println(employeeList);
 }
 
 public void createEmployee(String id, String name, Double grossSalary, int gpa){
-    Employee newEmployee = new Employee(id, name, grossSalary);
+    Employee newEmployee = new Intern(id, name, grossSalary);
     employeeList.put(newEmployee.getId(), newEmployee);
     System.out.println(employeeList);
 }
