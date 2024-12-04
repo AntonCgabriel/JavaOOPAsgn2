@@ -6,6 +6,7 @@ import java.util.Map;
 public class Company{
 
     HashMap<String, Employee> employeeList = new HashMap<>();
+    Map<String, Integer> actualMap = new HashMap<>();
 
     public String createEmployee(String id, String name, Double grossSalary){
         Employee newEmployee = new Employee(id, name, grossSalary);
@@ -17,13 +18,30 @@ public class Company{
     public String createEmployee(String id, String name, Double grossSalary, String degree){
         Employee newEmployee = new Manager(id, name, grossSalary, degree);
         employeeList.put(newEmployee.getId(), newEmployee);
+        if (actualMap.containsKey(degree)){
+            int counter = actualMap.get(degree);
+            counter += 1;
+            actualMap.put(degree, counter);
+        }
+        else{
+            actualMap.put(degree, 1);
+        }
         System.out.println(employeeList);
+
         return "Employee " + id + " was registered successfully.";
     }
 
     public String createEmployee(String id, String name, Double grossSalary, String degree, String faculty){
         Employee newEmployee = new Director(id, name, grossSalary, degree, faculty);
         employeeList.put(newEmployee.getId(), newEmployee);
+        if (actualMap.containsKey(degree)){
+            int counter = actualMap.get(degree);
+            counter += 1;
+            actualMap.put(degree, counter);
+        }
+        else{
+            actualMap.put(degree, 1);
+        }
         System.out.println(employeeList);
         return "Employee " + id + " was registered successfully.";
     }
@@ -112,7 +130,7 @@ public class Company{
         Employee selectedEmployee = employeeList.get(id);
         return selectedEmployee.getNetSalary();
 
-    }
+   }
 
     public String updateInternGPA(String id, int gpa){
         String test = "Holdin3";
@@ -155,7 +173,6 @@ public class Company{
     }
 
     public Map<String, Integer> mapEachDegree(){
-        Map<String, Integer> mapelimap = new HashMap();
-        return mapelimap;
+        return actualMap;
     }
 }
