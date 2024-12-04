@@ -1,6 +1,8 @@
 // package assignment3;
+import java.text.DecimalFormat;
 
 public class Employee{
+    protected DecimalFormat df = new DecimalFormat("#.00");
     protected String id = "";
     protected String name = "";
     protected double grossSalary = 0.0;
@@ -49,7 +51,7 @@ public class Employee{
     }
 
     public String getEmployeeInfo(String id){
-        String employeeInfo = (name + "'s gross salary is " + grossSalary + " SEK per month.");
+        String employeeInfo = (name + "'s gross salary is " + df.format(grossSalary) + " SEK per month.");
         return employeeInfo;
     }
 }

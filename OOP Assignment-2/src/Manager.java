@@ -39,8 +39,7 @@ public class Manager extends Employee{
 
     @Override
     public String getEmployeeInfo(String id){
-
-        String employeeInfo = (educationDegree + " " + name + "'s gross salary is " + grossSalary + " SEK per month.");
+        String employeeInfo = (educationDegree + " " + name + "'s gross salary is " + df.format(grossSalary) + " SEK per month.");
         return employeeInfo;
     }
 }

@@ -23,7 +23,7 @@ public class Director extends Manager {
 
     @Override
     public String getEmployeeInfo(String id){
-        String employeeInfo = (educationDegree + " " + name + "'s gross salary is " + grossSalary + " SEK per month. Dept: " + department);
+        String employeeInfo = (educationDegree + " " + name + "'s gross salary is " + df.format(grossSalary) + " SEK per month. Dept: " + department);
         return employeeInfo;
     }
 

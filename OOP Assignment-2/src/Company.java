@@ -54,14 +54,14 @@ public class Company{
 
 
     public String updateEmployeeName(String id, String newName){
-        Employee gotEmployee = employeeList.get(id);
-        gotEmployee.setName(newName);
+        Employee selectedEmployee = employeeList.get(id);
+        selectedEmployee.setName(newName);
         return "Employee " + id + " was updated successfully";
     }
 
     public String updateGrossSalary(String id, Double newGrossSalary){
-        Employee gotEmployee = employeeList.get(id);
-        gotEmployee.setGrossSalary(newGrossSalary);
+        Employee selectedEmployee = employeeList.get(id);
+        selectedEmployee.setGrossSalary(newGrossSalary);
         String test = "Holding2";
         return test;
     }
@@ -109,9 +109,8 @@ public class Company{
 
 
     public double getNetSalary(String id){
-        Employee gotEmployee = employeeList.get(id);
-        gotEmployee.getNetSalary();
-        return 654.22;
+        Employee selectedEmployee = employeeList.get(id);
+        return selectedEmployee.getNetSalary();
 
     }
 

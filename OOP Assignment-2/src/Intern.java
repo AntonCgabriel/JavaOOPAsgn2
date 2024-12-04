@@ -36,10 +36,7 @@ public class Intern extends Employee {
     @Override
     public String getEmployeeInfo(String id){
 
-        String employeeInfo = (name + "'s gross salary is " + gpaSalary + " SEK per month.");
+        String employeeInfo = (name + "'s gross salary is " + df.format(gpaSalary) + " SEK per month.");
         return employeeInfo;
     }
-
-
-
 }
