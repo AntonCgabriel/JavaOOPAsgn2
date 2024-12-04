@@ -21,4 +21,10 @@ public class Director extends Manager {
         return "hold";
     }
 
+    @Override
+    public String getEmployeeInfo(String id){
+        String employeeInfo = (educationDegree + " " + name + "'s gross salary is " + grossSalary + " SEK per month. Dept: " + department);
+        return employeeInfo;
+    }
+
 }

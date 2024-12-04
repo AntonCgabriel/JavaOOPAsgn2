@@ -25,7 +25,7 @@ public class Intern extends Employee {
             gpaSalary = 0;
         }
         else if (gpa <= 8){
-            gpaSalary = this.grossSalary; 
+            gpaSalary = this.grossSalary;
         }
         else{
             gpaSalary = this.grossSalary + 1000;
@@ -35,11 +35,11 @@ public class Intern extends Employee {
 
     @Override
     public String getEmployeeInfo(String id){
-    
+
         String employeeInfo = (name + "'s gross salary is " + gpaSalary + " SEK per month.");
         return employeeInfo;
     }
-    
+
 
 
 }

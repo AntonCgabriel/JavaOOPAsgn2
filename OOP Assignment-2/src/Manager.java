@@ -9,21 +9,21 @@ public class Manager extends Employee{
         this.educationDegree = educationdegree;
 
         switch (educationdegree){
-        case "BSc":
-            bonus = 0.1;
-            break;
-        case "Msc":
-            bonus = 0.2;
-            break;
-        case "PhD":
-            bonus = 0.35;
-            break;
-        case "default":
-            break;
+            case "BSc":
+                bonus = 0.1;
+                break;
+            case "Msc":
+                bonus = 0.2;
+                break;
+            case "PhD":
+                bonus = 0.35;
+                break;
+            case "default":
+                break;
         }
 
         this.grossSalary = grossSalary + (grossSalary * bonus) - ((grossSalary + (grossSalary * bonus)) * 0.1);
-        
+
     }
 
     protected void printInfo(){
@@ -39,8 +39,8 @@ public class Manager extends Employee{
 
     @Override
     public String getEmployeeInfo(String id){
-    
-        String employeeInfo = (name + "'s gross salary is " + grossSalary + " SEK per month.");
+
+        String employeeInfo = (educationDegree + " " + name + "'s gross salary is " + grossSalary + " SEK per month.");
         return employeeInfo;
     }
 }
