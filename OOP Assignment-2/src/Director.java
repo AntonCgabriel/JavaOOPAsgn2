@@ -7,8 +7,8 @@ public class Director extends Manager {
         super(id, name, grossSalary, educationdegree);
         this.department = department;
         int bossBonus = 5000;
-
-        this.grossSalary = grossSalary + ((grossSalary * bonus) + bossBonus) - ((grossSalary + (grossSalary * bonus) + bossBonus) * 0.1);
+        this.grossSalary = truncate(grossSalary);
+        totalSalary = this.grossSalary + ((this.grossSalary * bonus) + bossBonus) - ((this.grossSalary + (this.grossSalary * bonus) + bossBonus) * 0.1);
     }
 
     protected void printInfo(){
@@ -23,7 +23,7 @@ public class Director extends Manager {
 
     @Override
     public String getEmployeeInfo(String id){
-        String employeeInfo = (educationDegree + " " + name + "'s gross salary is " + df.format(grossSalary) + " SEK per month. Dept: " + department);
+        String employeeInfo = (educationDegree + " " + name + "'s gross salary is " + df.format(totalSalary) + " SEK per month. Dept: " + department);
         return employeeInfo;
     }
 

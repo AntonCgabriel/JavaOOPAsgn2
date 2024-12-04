@@ -3,10 +3,12 @@
 public class Manager extends Employee{
     protected String educationDegree;
     protected double bonus;
+    protected double totalSalary;
 
     public Manager(String id, String name, double grossSalary, String educationdegree) {
         super(id, name, grossSalary);
         this.educationDegree = educationdegree;
+        this.grossSalary = truncate(grossSalary);
 
         switch (educationdegree){
             case "BSc":
@@ -21,9 +23,7 @@ public class Manager extends Employee{
             case "default":
                 break;
         }
-
-        this.grossSalary = grossSalary + (grossSalary * bonus) - ((grossSalary + (grossSalary * bonus)) * 0.1);
-
+        totalSalary = this.grossSalary + (this.grossSalary * bonus);
     }
 
     protected void printInfo(){
@@ -39,7 +39,7 @@ public class Manager extends Employee{
 
     @Override
     public String getEmployeeInfo(String id){
-        String employeeInfo = (educationDegree + " " + name + "'s gross salary is " + df.format(grossSalary) + " SEK per month.");
+        String employeeInfo = (educationDegree + " " + name + "'s gross salary is " + df.format(totalSalary) + " SEK per month.");
         return employeeInfo;
     }
 }

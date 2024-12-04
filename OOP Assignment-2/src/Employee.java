@@ -12,7 +12,7 @@ public class Employee{
         this.id = id;
         this.name = name;
         this.grossSalary = truncate(grossSalary);
-        this.netSalary = truncate(this.grossSalary - (this.grossSalary * 0.1));
+        this.netSalary = calculateNet(this.grossSalary);
         printInfo();
     }
 
@@ -53,6 +53,10 @@ public class Employee{
     public String getEmployeeInfo(String id){
         String employeeInfo = (name + "'s gross salary is " + df.format(grossSalary) + " SEK per month.");
         return employeeInfo;
+    }
+
+    public double calculateNet(double grossSalary){
+        return truncate(grossSalary - (grossSalary * 0.1));
     }
 }
 
