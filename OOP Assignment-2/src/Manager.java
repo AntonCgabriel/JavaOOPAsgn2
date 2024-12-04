@@ -1,7 +1,7 @@
 // package assignment3;
 
 public class Manager extends Employee{
-    private String educationDegree;
+    protected String educationDegree;
     protected double bonus;
 
     public Manager(String id, String name, double grossSalary, String educationdegree) {
