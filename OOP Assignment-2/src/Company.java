@@ -30,8 +30,13 @@ public class Company{
         System.out.println(employeeList);
     }
 
-    public void removeEmployee(String id){
-        employeeList.remove(id);
+    public String removeEmployee(String id){
+        String message = "";
+        if (employeeList.containsKey(id)){
+            employeeList.remove(id);
+            message = "Employee " + id + "was successfully removed.";
+        }
+        return message;
     }
 
     public String printEmployee(String id){
