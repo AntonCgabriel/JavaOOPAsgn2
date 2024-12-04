@@ -39,7 +39,7 @@ public class Company{
         String message = "";
         if (employeeList.containsKey(id)){
             employeeList.remove(id);
-            message = "Employee " + id + "was successfully removed.";
+            message = "Employee " + id + " was successfully removed.";
         }
         return message;
     }
