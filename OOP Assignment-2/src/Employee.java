@@ -15,37 +15,31 @@ public class Employee{
 
     protected double truncate(double value){
         double truncatedValue =  Math.floor(value * 100) / 100;
-
         return truncatedValue;
     }
 
     public String getId(){
         return id;
-        
     }
 
     public String getName(){
         return name;
-        
-    }
-
-    public void setName(String newName){
-        name = newName;
-
     }
 
     public double getGrossSalary(){
         return grossSalary;
-        
     }
 
     public double getNetSalary(){
         return netSalary;
     }
 
+    public void setName(String newName){
+        name = newName;
+    }
+
     public void setGrossSalary(Double newGrossSalary){
         grossSalary = newGrossSalary;
-
     }
 }
 
