@@ -120,19 +120,19 @@ public class Company{
 
     }
 
-    public void promoteToManager(){
-
-
+    public String promoteToManager(String id, String degree){
+        String test = "Holding";
+        return test;       
     }
 
-    public void promoteToDirector(){
-
-
+    public String promoteToDirector(String id, String degree, String faculty){
+        String test = "Holding";
+        return test;       
     }
 
-    public void promoteToIntern(){
-
-
+    public String promoteToIntern(String id, int gpa){
+        String test = "Holding";
+        return test;
     }
 
     public void printSortedEmployees(){
