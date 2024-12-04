@@ -43,12 +43,11 @@ public class Company{
 
     public String printEmployee(String id){
         Employee selectedEmployee = employeeList.get(id);
-        String employeeName = selectedEmployee.getName();
-        double employeeGrossSalary = selectedEmployee.getGrossSalary();
-        String employeeInfo = (employeeName + "'s gross salary is " + employeeGrossSalary + " SEK per month.");
-        System.out.print(employeeInfo);
-        return employeeInfo;
+        String info = selectedEmployee.getEmployeeInfo(id);
+        System.out.print(info);
+        return info;
     }
+
 
 
     public String updateEmployeeName(String id, String newName){
@@ -91,21 +90,20 @@ public class Company{
             return test;
     }    
 
-    public String printAllEmployees(){
-        final String EOL = System.lineSeparator();
-        String allEmployeesInfo = "All registered employees:";
-    
-    
-        for (Map.Entry<String, Employee> entry : employeeList.entrySet()){
-            Employee employee = entry.getValue();
-            String id = employee.getId();
-            String employeeInfo = printEmployee(id);
-            allEmployeesInfo = allEmployeesInfo + employeeInfo + EOL;
-            }
-        System.out.print(allEmployeesInfo);
-        return allEmployeesInfo;
-    
+    public void printAllEmployees(){
+    final String EOL = System.lineSeparator();
+    String allEmployeesInfo = "All registered employees:" + EOL;
+
+
+    for (Map.Entry<String, Employee> entry : employeeList.entrySet()){
+        Employee employee = entry.getValue();
+        String id = employee.getId();
+        String employeeInfo = employee.getEmployeeInfo(id);
+        allEmployeesInfo = allEmployeesInfo + employeeInfo + EOL;
+        }
+    System.out.print(allEmployeesInfo);
     }
+    
 
     public double getNetSalary(String id){
         Employee gotEmployee = employeeList.get(id);

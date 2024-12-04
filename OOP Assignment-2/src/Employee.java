@@ -41,6 +41,11 @@ public class Employee{
     public void setGrossSalary(Double newGrossSalary){
         grossSalary = newGrossSalary;
     }
+
+    public String getEmployeeInfo(String id){
+        String employeeInfo = (name + "'s gross salary is " + grossSalary + " SEK per month.");
+        return employeeInfo;
+}
 }
 
 

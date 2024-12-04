@@ -29,4 +29,10 @@ public class Manager extends Employee{
         return "hold";
     }
 
+    @Override
+    public String getEmployeeInfo(String id){
+    
+        String employeeInfo = (name + "'s gross salary is " + grossSalary + " SEK per month.");
+        return employeeInfo;
+    }
 }
