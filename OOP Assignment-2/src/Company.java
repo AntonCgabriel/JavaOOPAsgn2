@@ -29,7 +29,7 @@ public class Company{
     }
 
     public String createEmployee(String id, String name, Double grossSalary, int gpa){
-        Employee newEmployee = new Intern(id, name, grossSalary);
+        Employee newEmployee = new Intern(id, name, grossSalary, gpa);
         employeeList.put(newEmployee.getId(), newEmployee);
         System.out.println(employeeList);
         return "Employee " + id + " was registered successfully.";

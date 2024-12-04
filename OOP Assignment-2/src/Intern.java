@@ -4,20 +4,19 @@ public class Intern extends Employee {
     double gpaSalary;
     int gpa;
 
-    public Intern(String id, String name, Double grossSalary) {
+    public Intern(String id, String name, Double grossSalary, int gpa) {
         super(id, name, grossSalary);
-        int newGpa = 0;
-        setGpa(newGpa);
+        this.gpa = gpa;
+        setSalary();
     }
 
     protected void printInfo(){
         System.out.println("Intern "+ this.id + " was registered successfully.");
-
     }
 
     public String setGpa(int gpa){
         this.gpa = gpa;
-        return "hold";
+        return "GPA was updated successfully.";
     }
 
     public void setSalary(){
@@ -36,7 +35,7 @@ public class Intern extends Employee {
     @Override
     public String getEmployeeInfo(String id){
 
-        String employeeInfo = (name + "'s gross salary is " + df.format(gpaSalary) + " SEK per month.");
+        String employeeInfo = (name + "'s gross salary is " + df.format(gpaSalary) + " SEK per month. GPA: " + gpa);
         return employeeInfo;
     }
 }
