@@ -6,10 +6,11 @@ public class Company{
 
     HashMap<String, Employee> employeeList = new HashMap<>();
 
-    public void createEmployee(String id, String name, Double grossSalary){
+    public String createEmployee(String id, String name, Double grossSalary){
         Employee newEmployee = new Employee(id, name, grossSalary);
         employeeList.put(newEmployee.getId(), newEmployee);
-        System.out.println(employeeList);
+        System.out.println(employeeList); 
+        return "test";
     }
 
     public void createEmployee(String id, String name, Double grossSalary, String degree){
@@ -24,10 +25,11 @@ public class Company{
         System.out.println(employeeList);
     }
 
-    public void createEmployee(String id, String name, Double grossSalary, int gpa){
+    public String createEmployee(String id, String name, Double grossSalary, int gpa){
         Employee newEmployee = new Intern(id, name, grossSalary);
         employeeList.put(newEmployee.getId(), newEmployee);
         System.out.println(employeeList);
+        return "Test";
     }
 
     public String removeEmployee(String id){
@@ -105,10 +107,10 @@ public class Company{
     
     }
 
-    public void getNetSalary(String id){
+    public double getNetSalary(String id){
         Employee gotEmployee = employeeList.get(id);
         gotEmployee.getNetSalary();
-
+        return 654.22;
 
     }
 
