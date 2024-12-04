@@ -91,7 +91,7 @@ public class Company{
             allEmployeesInfo = allEmployeesInfo + employeeInfo + EOL;
             }
         System.out.print(allEmployeesInfo);
-        }
+    }
 
     public void getNetSalary(String id){
         Employee gotEmployee = employeeList.get(id);
