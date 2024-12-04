@@ -10,7 +10,12 @@ public class Employee{
         this.name = name;
         this.grossSalary = truncate(grossSalary);
         this.netSalary = truncate(this.grossSalary - (this.grossSalary * 0.1));
+        printInfo();
+    }
+
+    protected void printInfo(){
         System.out.println("Employee "+ this.id + " was registered successfully.");
+
     }
 
     protected double truncate(double value){

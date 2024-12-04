@@ -1,14 +1,16 @@
 public class Intern extends Employee {
-    String id;
-    double grossSalary;
     double gpaSalary;
     int gpa;
 
     public Intern(String id, String name, Double grossSalary) {
         super(id, name, grossSalary);
-        System.out.println("Employee " + id + " was registered successfully.");
         int newGpa = 0;
         setGpa(newGpa);
+    }
+
+    protected void printInfo(){
+        System.out.println("Intern "+ this.id + " was registered successfully.");
+
     }
 
     public String setGpa(int gpa){
@@ -21,11 +23,19 @@ public class Intern extends Employee {
             gpaSalary = 0;
         }
         else if (gpa <= 8){
-            gpaSalary = grossSalary; 
+            gpaSalary = this.grossSalary; 
         }
         else{
-            gpaSalary = grossSalary + 1000;
+            gpaSalary = this.grossSalary + 1000;
         }
+    }
+
+
+    @Override
+    public String getEmployeeInfo(String id){
+    
+        String employeeInfo = (name + "'s gross salary is " + gpaSalary + " SEK per month.");
+        return employeeInfo;
     }
     
 

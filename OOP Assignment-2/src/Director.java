@@ -8,8 +8,12 @@ public class Director extends Manager {
         this.department = department;
         int bossBonus = 5000;
 
-        grossSalary = grossSalary + ((grossSalary * bonus) + bossBonus) - ((grossSalary + (grossSalary * bonus) + bossBonus) * 0.1);
-        System.out.println("Manager "+ this.id + " was registered successfully.");
+        this.grossSalary = grossSalary + ((grossSalary * bonus) + bossBonus) - ((grossSalary + (grossSalary * bonus) + bossBonus) * 0.1);
+    }
+
+    protected void printInfo(){
+        System.out.println("Director "+ this.id + " was registered successfully.");
+
     }
 
     public String setDepartment(String department){
