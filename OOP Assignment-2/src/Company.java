@@ -49,10 +49,11 @@ public class Company{
     }
 
 
-    public void updateEmployeeName(String id, String newName){
+    public String updateEmployeeName(String id, String newName){
         Employee gotEmployee = employeeList.get(id);
         gotEmployee.setName(newName);
-
+        String test = "Holding";
+        return test;
     }
 
     public String updateGrossSalary(String id, Double newGrossSalary){
@@ -107,8 +108,9 @@ public class Company{
 
     }
 
-    public void updateInternGPA(String id, int gpa){
-
+    public String updateInternGPA(String id, int gpa){
+        String test = "Holding";
+        return test;
 
     }
 
@@ -119,9 +121,10 @@ public class Company{
         
     }
 
-    public void updateDirectorDept(){
-
-
+    public String updateDirectorDept(String id, String faculty){
+        String test = "Holding";
+        return test;
+        
     }
 
     public String promoteToManager(String id, String degree){
@@ -139,8 +142,9 @@ public class Company{
         return test;
     }
 
-    public void printSortedEmployees(){
-
+    public String printSortedEmployees(){
+        String test = "Holding";
+        return test;
 
     }
 
