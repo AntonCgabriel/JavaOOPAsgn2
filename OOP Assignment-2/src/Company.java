@@ -75,23 +75,25 @@ public class Company{
         System.out.print(totalGrossSalary);
     }
 
-    public void getTotalNetSalary(){
+    public double getTotalNetSalary(){
         double totalNetSalary = 0;
-
+    
         // Iterates over all entries in the map and runs function for each entry
         for (Map.Entry<String, Employee> entry : employeeList.entrySet()){
             Employee employee = entry.getValue();
-
+    
             totalNetSalary += employee.getNetSalary();
         }
         System.out.print(totalNetSalary);
-    }
+            double test = 156;
+            return test;
+    }    
 
-    public void printAllEmployees(){
+    public String printAllEmployees(){
         final String EOL = System.lineSeparator();
         String allEmployeesInfo = "All registered employees:";
-
-
+    
+    
         for (Map.Entry<String, Employee> entry : employeeList.entrySet()){
             Employee employee = entry.getValue();
             String id = employee.getId();
@@ -99,6 +101,8 @@ public class Company{
             allEmployeesInfo = allEmployeesInfo + employeeInfo + EOL;
             }
         System.out.print(allEmployeesInfo);
+        return allEmployeesInfo;
+    
     }
 
     public void getNetSalary(String id){
