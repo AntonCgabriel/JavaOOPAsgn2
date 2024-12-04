@@ -31,6 +31,7 @@ public class Manager extends Employee{
         return employeeInfo;
     }
 
+<<<<<<< Updated upstream
     public double calculateBonusRatio(String educationDegree) {
         switch (educationDegree) {
             case "BSc":
@@ -42,4 +43,10 @@ public class Manager extends Employee{
         }
         return 0;
     }
+=======
+    public String getEducationDegree(){
+        return educationDegree;
+    }
+
+>>>>>>> Stashed changes
 }
