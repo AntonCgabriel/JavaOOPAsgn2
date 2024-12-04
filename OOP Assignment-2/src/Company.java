@@ -133,12 +133,12 @@ public class Company{
 
     public String promoteToManager(String id, String degree){
         String test = "Holding";
-        return test;       
+        return test;
     }
 
     public String promoteToDirector(String id, String degree, String faculty){
         String test = "Holding";
-        return test;       
+        return test;
     }
 
     public String promoteToIntern(String id, int gpa){
