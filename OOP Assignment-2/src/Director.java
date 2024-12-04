@@ -3,12 +3,21 @@
 public class Director extends Manager {
     private String department;
 
-    public Director(String id, String name, double grossSalary, String educationdegree, String department) {
-        super(id, name, grossSalary, educationdegree);
+    public Director(String id, String name, double grossSalary, String educationDegree, String department) {
+        super(id, name, grossSalary, educationDegree);
         this.department = department;
         int bossBonus = 5000;
         this.grossSalary = truncate(grossSalary);
-        totalSalary = this.grossSalary + ((this.grossSalary * bonus) + bossBonus) - ((this.grossSalary + (this.grossSalary * bonus) + bossBonus) * 0.1);
+        bonus = calculateBonusRatio(educationDegree);
+        totalSalary = this.grossSalary + ((this.grossSalary * bonus) + bossBonus);
+
+        if(totalSalary < 30000){
+            netSalary = totalSalary - (totalSalary * 0.1);
+        } else if (totalSalary <= 50000) {
+            netSalary = totalSalary - (totalSalary * 0.2);
+        } else {
+            netSalary = totalSalary - (30000 * 0.2) - ((totalSalary - 30000) * 0.4);
+        }
     }
 
     protected void printInfo(){
