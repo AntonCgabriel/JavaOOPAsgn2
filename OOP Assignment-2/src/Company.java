@@ -12,6 +12,27 @@ public void createEmployee(String id, String name, Double grossSalary){
     System.out.println(employeeList);
 }
 
+public void createEmployee(String id, String name, Double grossSalary, String degree){
+    Employee newEmployee = new Employee(id, name, grossSalary);
+    employeeList.put(newEmployee.getId(), newEmployee);
+    System.out.println(employeeList);
+}
+
+public void createEmployee(String id, String name, Double grossSalary, String degree, String faculty){
+    Employee newEmployee = new Employee(id, name, grossSalary);
+    employeeList.put(newEmployee.getId(), newEmployee);
+    System.out.println(employeeList);
+}
+
+public void createEmployee(String id, String name, Double grossSalary, int gpa){
+    Employee newEmployee = new Employee(id, name, grossSalary);
+    employeeList.put(newEmployee.getId(), newEmployee);
+    System.out.println(employeeList);
+}
+
+
+
+
 public void removeEmployee(String id){
     employeeList.remove(id);
 }
