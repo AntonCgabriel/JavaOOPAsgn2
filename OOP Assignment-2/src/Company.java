@@ -57,8 +57,34 @@ public class Company{
         String message = "";
         if (employeeList.containsKey(id)){
             employeeList.remove(id);
+            if (employeeList.get(id) instanceof Manager){
+                Manager manager = (Manager) employeeList.get(id);
+                String degree = manager.getEducationDegree();
+                if (actualMap.get(degree) == 1){
+                    actualMap.remove(degree);
+                }
+                else{
+                    int counter =  actualMap.get(degree);
+                    counter -= 1;
+                    actualMap.put(degree, counter);
+                }
+            }
+            if (employeeList.get(id) instanceof Director){
+                Director manager = (Director) employeeList.get(id);
+                String degree = manager.getEducationDegree();
+                if (actualMap.get(degree) == 1){
+                    actualMap.remove(degree);
+                }
+                else{
+                    int counter =  actualMap.get(degree);
+                    counter -= 1;
+                    actualMap.put(degree, counter);
+                }
+            }
             message = "Employee " + id + " was successfully removed.";
         }
+        
+
         return message;
     }
 
