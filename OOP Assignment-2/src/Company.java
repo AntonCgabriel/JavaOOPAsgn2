@@ -1,4 +1,5 @@
-//import assignment3.Employee;
+// package assignment3;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,16 +14,18 @@ public class Company{
         return "test";
     }
 
-    public void createEmployee(String id, String name, Double grossSalary, String degree){
+    public String createEmployee(String id, String name, Double grossSalary, String degree){
         Employee newEmployee = new Manager(id, name, grossSalary, degree);
         employeeList.put(newEmployee.getId(), newEmployee);
         System.out.println(employeeList);
+        return "test";
     }
 
-    public void createEmployee(String id, String name, Double grossSalary, String degree, String faculty){
+    public String createEmployee(String id, String name, Double grossSalary, String degree, String faculty){
         Employee newEmployee = new Director(id, name, grossSalary, degree, faculty);
         employeeList.put(newEmployee.getId(), newEmployee);
         System.out.println(employeeList);
+        return "test";
     }
 
     public String createEmployee(String id, String name, Double grossSalary, int gpa){
@@ -90,7 +93,7 @@ public class Company{
             return test;
     }    
 
-    public void printAllEmployees(){
+    public String printAllEmployees(){
     final String EOL = System.lineSeparator();
     String allEmployeesInfo = "All registered employees:" + EOL;
 
@@ -102,6 +105,7 @@ public class Company{
         allEmployeesInfo = allEmployeesInfo + employeeInfo + EOL;
         }
     System.out.print(allEmployeesInfo);
+    return "test";
     }
     
 
@@ -152,8 +156,8 @@ public class Company{
 
     }
 
-    public void mapEachDegree(){
-
-
+    public Map<String, Integer> mapEachDegree(){
+        Map<String, Integer> mapelimap = new HashMap();
+        return mapelimap;
     }
 }

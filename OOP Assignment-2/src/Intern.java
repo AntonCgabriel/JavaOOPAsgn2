@@ -1,3 +1,5 @@
+// package assignment3;
+
 public class Intern extends Employee {
     double gpaSalary;
     int gpa;
