@@ -3,50 +3,46 @@
 public class Manager extends Employee{
     protected String educationDegree;
     protected double bonus;
-    protected double totalSalary;
 
-    public Manager(String id, String name, double grossSalary, String educationDegree) {
-        super(id, name, grossSalary);
+    public Manager(String id, String name, double baseSalary, String educationDegree) {
+        super(id, name, baseSalary);
         this.educationDegree = educationDegree;
-        this.grossSalary = truncate(grossSalary);
-        this.netSalary = calculateNet(this.grossSalary);
+        this.baseSalary = truncate(baseSalary);
         bonus = calculateBonusRatio(educationDegree);
-        totalSalary = this.grossSalary + (this.grossSalary * bonus);
+        grossSalary = calculateGross(this.baseSalary, bonus);
+        this.netSalary = calculateNet(grossSalary);
     }
 
-    protected void printInfo(){
-        System.out.println("Manager "+ this.id + " was registered successfully.");
-
+    // Manager Getters
+    @Override
+    public String getEmployeeInfo(String id){
+        String employeeInfo = (educationDegree + " " + name + "'s gross salary is " + df.format(grossSalary) + " SEK per month.");
+        return employeeInfo;
     }
 
+    public String getEducationDegree(){
+        return educationDegree;
+    }
 
+    // Manager Setters
     public String setDegree(String educationDegree){
         this.educationDegree = educationDegree;
         return "hold";
     }
 
-    @Override
-    public String getEmployeeInfo(String id){
-        String employeeInfo = (educationDegree + " " + name + "'s gross salary is " + df.format(totalSalary) + " SEK per month.");
-        return employeeInfo;
-    }
-
-<<<<<<< Updated upstream
+    // Calculating Methods
     public double calculateBonusRatio(String educationDegree) {
-        switch (educationDegree) {
-            case "BSc":
-                return 0.1;
-            case "Msc":
-                return 0.2;
-            case "PhD":
-                return 0.35;
-        }
-        return 0;
-    }
-=======
-    public String getEducationDegree(){
-        return educationDegree;
+        return switch (educationDegree) {
+            case "BSc" -> 0.1;
+            case "Msc" -> 0.2;
+            case "PhD" -> 0.35;
+            default -> 0;
+        };
     }
 
->>>>>>> Stashed changes
+    // Overloading for Manager
+    public double calculateGross(double base, double bonus){
+        double gross = base + (base * bonus);
+        return gross;
+    }
 }

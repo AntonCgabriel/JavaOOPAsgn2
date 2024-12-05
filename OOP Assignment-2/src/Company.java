@@ -8,15 +8,15 @@ public class Company{
     HashMap<String, Employee> employeeList = new HashMap<>();
     Map<String, Integer> actualMap = new HashMap<>();
 
-    public String createEmployee(String id, String name, Double grossSalary){
-        Employee newEmployee = new Employee(id, name, grossSalary);
+    public String createEmployee(String id, String name, Double baseSalary){
+        Employee newEmployee = new Employee(id, name, baseSalary);
         employeeList.put(newEmployee.getId(), newEmployee);
         System.out.println(employeeList);
-        return "Employee " + id + " was registered successfully.";
+        return newEmployee.getEmployeeAddedMessage();
     }
 
-    public String createEmployee(String id, String name, Double grossSalary, String degree){
-        Employee newEmployee = new Manager(id, name, grossSalary, degree);
+    public String createEmployee(String id, String name, Double baseSalary, String degree){
+        Employee newEmployee = new Manager(id, name, baseSalary, degree);
         employeeList.put(newEmployee.getId(), newEmployee);
         if (actualMap.containsKey(degree)){
             int counter = actualMap.get(degree);
@@ -27,8 +27,7 @@ public class Company{
             actualMap.put(degree, 1);
         }
         System.out.println(employeeList);
-
-        return "Employee " + id + " was registered successfully.";
+        return newEmployee.getEmployeeAddedMessage();
     }
 
     public String createEmployee(String id, String name, Double grossSalary, String degree, String faculty){
@@ -43,14 +42,14 @@ public class Company{
             actualMap.put(degree, 1);
         }
         System.out.println(employeeList);
-        return "Employee " + id + " was registered successfully.";
+        return newEmployee.getEmployeeAddedMessage();
     }
 
     public String createEmployee(String id, String name, Double grossSalary, int gpa){
         Employee newEmployee = new Intern(id, name, grossSalary, gpa);
         employeeList.put(newEmployee.getId(), newEmployee);
         System.out.println(employeeList);
-        return "Employee " + id + " was registered successfully.";
+        return newEmployee.getEmployeeAddedMessage();
     }
 
     public String removeEmployee(String id){
@@ -83,8 +82,6 @@ public class Company{
             }
             message = "Employee " + id + " was successfully removed.";
         }
-        
-
         return message;
     }
 

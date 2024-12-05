@@ -10,10 +10,6 @@ public class Intern extends Employee {
         setSalary();
     }
 
-    protected void printInfo(){
-        System.out.println("Intern "+ this.id + " was registered successfully.");
-    }
-
     public String setGpa(int gpa){
         this.gpa = gpa;
         return "GPA was updated successfully.";
@@ -24,10 +20,10 @@ public class Intern extends Employee {
             gpaSalary = 0;
         }
         else if (gpa <= 8){
-            gpaSalary = this.grossSalary;
+            gpaSalary = this.baseSalary;
         }
         else{
-            gpaSalary = this.grossSalary + 1000;
+            gpaSalary = this.baseSalary + 1000;
         }
     }
 
