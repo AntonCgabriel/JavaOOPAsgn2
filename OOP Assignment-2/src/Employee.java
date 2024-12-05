@@ -13,10 +13,21 @@ public class Employee{
     public Employee(String id, String name, double baseSalary) {
         this.id = id;
         this.name = name;
+        this.baseSalary = baseSalary;
+        calculateGross(baseSalary);
+    }
+
+    public double calculateGross(double baseSalary){
         this.baseSalary = truncate(baseSalary);
         grossSalary = this.baseSalary;
         this.netSalary = calculateNet(this.baseSalary);
+        return grossSalary;
     }
+
+
+
+
+
 
     // Employee class Getters
     public String getId(){
@@ -69,10 +80,7 @@ public class Employee{
         return truncatedValue;
     }
 
-    public double calculateGross(double base, double bonus){
-        double gross = base;
-        return gross;
-    }
+
 
 }
 
