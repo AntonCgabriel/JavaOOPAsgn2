@@ -65,12 +65,12 @@ public class Company{
     public String removeEmployee(String id){
         String message = "";
         if (employeeList.containsKey(id)){
-            employeeList.remove(id);
             if (employeeList.get(id) instanceof Manager){
                 Manager manager = (Manager) employeeList.get(id);
                 String degree = manager.getEducationDegree();
                 if (actualMap.get(degree) == 1){
                     actualMap.remove(degree);
+                    employeeList.remove(id);
                 }
                 else{
                     int counter =  actualMap.get(degree);
@@ -83,6 +83,7 @@ public class Company{
                 String degree = manager.getEducationDegree();
                 if (actualMap.get(degree) == 1){
                     actualMap.remove(degree);
+                    employeeList.remove(id);
                 }
                 else{
                     int counter =  actualMap.get(degree);
