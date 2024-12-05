@@ -8,6 +8,7 @@ public class Employee{
     protected double baseSalary = 0.0;
     protected double grossSalary = 0.0;
     protected double netSalary = 0.0;
+    protected double bonusRatio = 0.0;
 
     public Employee(String id, String name, double baseSalary) {
         this.id = id;
@@ -35,7 +36,7 @@ public class Employee{
     }
 
     public String getEmployeeInfo(String id){
-        String message = (name + "'s gross salary is " + df.format(baseSalary) + " SEK per month.");
+        String message = (name + "'s gross salary is " + df.format(grossSalary) + " SEK per month.");
         return message;
     }
 
@@ -68,7 +69,7 @@ public class Employee{
         return truncatedValue;
     }
 
-    public double calculateGross(double base){
+    public double calculateGross(double base, double bonus){
         double gross = base;
         return gross;
     }

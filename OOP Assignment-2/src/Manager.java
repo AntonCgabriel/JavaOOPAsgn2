@@ -2,7 +2,6 @@
 
 public class Manager extends Employee{
     protected String educationDegree;
-    protected double bonusRatio;
 
     public Manager(String id, String name, double baseSalary, String educationDegree) {
         super(id, name, baseSalary);
@@ -40,7 +39,7 @@ public class Manager extends Employee{
         };
     }
 
-    // Overloading for Manager
+    @Override
     public double calculateGross(double base, double bonus){
         double gross = base + (base * bonus);
         return gross;

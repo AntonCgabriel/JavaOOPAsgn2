@@ -11,13 +11,17 @@ public class Company{
     public String createEmployee(String id, String name, Double baseSalary){
         Employee newEmployee = new Employee(id, name, baseSalary);
         employeeList.put(newEmployee.getId(), newEmployee);
-        System.out.println(employeeList);
+        //System.out.println(employeeList);
+
+        // Feedback on creation
         return newEmployee.getEmployeeAddedMessage();
     }
 
     public String createEmployee(String id, String name, Double baseSalary, String degree){
         Employee newEmployee = new Manager(id, name, baseSalary, degree);
         employeeList.put(newEmployee.getId(), newEmployee);
+
+        // Counting degrees
         if (actualMap.containsKey(degree)){
             int counter = actualMap.get(degree);
             counter += 1;
@@ -26,13 +30,17 @@ public class Company{
         else{
             actualMap.put(degree, 1);
         }
-        System.out.println(employeeList);
+        // System.out.println(employeeList);
+
+        // Feedback on creation
         return newEmployee.getEmployeeAddedMessage();
     }
 
     public String createEmployee(String id, String name, Double grossSalary, String degree, String faculty){
         Employee newEmployee = new Director(id, name, grossSalary, degree, faculty);
         employeeList.put(newEmployee.getId(), newEmployee);
+
+        // Counting degrees
         if (actualMap.containsKey(degree)){
             int counter = actualMap.get(degree);
             counter += 1;
@@ -41,7 +49,9 @@ public class Company{
         else{
             actualMap.put(degree, 1);
         }
-        System.out.println(employeeList);
+        //System.out.println(employeeList);
+
+        // Feedback on creation
         return newEmployee.getEmployeeAddedMessage();
     }
 
@@ -88,7 +98,7 @@ public class Company{
     public String printEmployee(String id){
         Employee selectedEmployee = employeeList.get(id);
         String info = selectedEmployee.getEmployeeInfo(id);
-        System.out.print(info);
+        // System.out.print(info);
         return info;
     }
 
