@@ -1,4 +1,4 @@
-package assignment3;
+// package assignment3;
 import java.text.DecimalFormat;
 
 public class Employee{
@@ -81,7 +81,10 @@ public class Employee{
         return truncatedValue;
     }
 
-
+    public String getRealGrossSalary(){
+        String salary = df.format(grossSalary);
+        return salary;
+    }
 
 }
 

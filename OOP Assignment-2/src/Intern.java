@@ -1,4 +1,4 @@
-package assignment3;
+// package assignment3;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -52,4 +52,12 @@ public class Intern extends Employee {
         Double netSalary = Double.parseDouble(df.format(gpaSalary));
         return netSalary;
     }
+    
+    @Override
+    public String getRealGrossSalary(){
+        String salary = df.format(gpaSalary);
+        return salary;
+    }
+
+
 }

@@ -1,7 +1,9 @@
-package assignment3;
+//package assignment3;
 import java.util.LinkedHashMap;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Collections;
+import java.util.ArrayList;
 
 public class Company{
 
@@ -140,8 +142,8 @@ public class Company{
             totalNetSalary += employee.getNetSalary();
         }
         System.out.print(totalNetSalary);
-        double test = 156;
-        return test;
+        
+        return totalNetSalary;
     }
 
     public String printAllEmployees(){
@@ -244,9 +246,53 @@ public class Company{
     }
 
     public String printSortedEmployees(){
-        String test = "Holding9";
-        return test;
+        String totalEmployeeInfo = "Employees sorted by gross salary (ascending order):\n";
+        System.out.println("1" + totalEmployeeInfo);
+        Map<String, String> salaryMessage = new HashMap<>();
+        ArrayList<String> salaries = new ArrayList<String>();
 
+        for (String i: employeeList.keySet()){
+            if (employeeList.get(i) instanceof Manager){
+                Manager manager = (Manager) employeeList.get(i);
+                String employeeInfo = manager.getEmployeeInfo(i);
+                String employeeSalarie = manager.getRealGrossSalary();
+                salaryMessage.put(employeeSalarie, employeeInfo);
+                salaries.add(employeeSalarie);
+            }
+        
+            else if (employeeList.get(i) instanceof Director){
+                Director director = (Director) employeeList.get(i);
+                String employeeInfo = director.getEmployeeInfo(i);               
+                String employeeSalarie = director.getRealGrossSalary();
+                salaryMessage.put(employeeSalarie, employeeInfo);
+                salaries.add(employeeSalarie);
+            }
+
+            else if (employeeList.get(i) instanceof Intern){
+                Intern intern = (Intern) employeeList.get(i);
+                String employeeInfo = intern.getEmployeeInfo(i);               
+                String employeeSalarie = intern.getRealGrossSalary();
+                salaryMessage.put(employeeSalarie, employeeInfo);
+                salaries.add(employeeSalarie);
+            }
+            else {
+                String employeeInfo = employeeList.get(i).getEmployeeInfo(i);
+                String employeeSalarie = employeeList.get(i).getRealGrossSalary();
+                salaryMessage.put(employeeSalarie, employeeInfo);
+                salaries.add(employeeSalarie);
+            }
+        }
+        System.out.println(salaries);
+
+        Collections.sort(salaries);
+        System.out.println(salaries);
+
+        for (String i: salaries){
+            String info = salaryMessage.get(i) + "\n";
+            totalEmployeeInfo += info;
+        }
+        System.out.println("2" + totalEmployeeInfo);
+        return totalEmployeeInfo;
     }
 
     public Map<String, Integer> mapEachDegree(){
