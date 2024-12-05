@@ -175,13 +175,19 @@ public class Company{
 
 
     public String updateManagerDegree(String id, String degree){
-        String test = "Holding4";
+        Employee employee = employeeList.get(id);
+        Manager manager = (Manager) employee;
+        manager.setDegree(degree);
+        String test = "Employee " + id + " was updated successfully";
         return test;
 
     }
 
     public String updateDirectorDept(String id, String faculty){
-        String test = "Holding5";
+        Employee employee = employeeList.get(id);
+        Director manager = (Director) employee;
+        manager.setDegree(faculty);
+        String test = "Employee " + id + " was updated successfully";
         return test;
 
     }
