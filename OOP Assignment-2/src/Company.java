@@ -6,92 +6,53 @@ import java.util.Collections;
 import java.util.ArrayList;
 
 public class Company{
-
     LinkedHashMap<String, Employee> employeeList = new LinkedHashMap<>();
-    Map<String, Integer> actualMap = new HashMap<>();
+    Map<String, Integer> degreeCountMap = new HashMap<>();
 
     public String createEmployee(String id, String name, Double baseSalary){
         Employee newEmployee = new Employee(id, name, baseSalary);
         employeeList.put(newEmployee.getId(), newEmployee);
-        //System.out.println(employeeList);
 
         // Feedback on creation
         return newEmployee.getEmployeeAddedMessage();
     }
-
+                        
     public String createEmployee(String id, String name, Double baseSalary, String degree){
         Employee newEmployee = new Manager(id, name, baseSalary, degree);
-        employeeList.put(newEmployee.getId(), newEmployee);
 
         // Counting degrees
-        if (actualMap.containsKey(degree)){
-            int counter = actualMap.get(degree);
-            counter += 1;
-            actualMap.put(degree, counter);
-        }
-        else{
-            actualMap.put(degree, 1);
-        }
-        // System.out.println(employeeList);
+        incrementDegreeCount(degree);
 
-        // Feedback on creation
-        return newEmployee.getEmployeeAddedMessage();
+        // Add employee to dictionary
+        return registerEmployee(id, newEmployee);
     }
 
     public String createEmployee(String id, String name, Double grossSalary, String degree, String faculty){
         Employee newEmployee = new Director(id, name, grossSalary, degree, faculty);
-        employeeList.put(newEmployee.getId(), newEmployee);
 
         // Counting degrees
-        if (actualMap.containsKey(degree)){
-            int counter = actualMap.get(degree);
-            counter += 1;
-            actualMap.put(degree, counter);
-        }
-        else{
-            actualMap.put(degree, 1);
-        }
-        //System.out.println(employeeList);
+        incrementDegreeCount(degree);
 
-        // Feedback on creation
-        return newEmployee.getEmployeeAddedMessage();
+        // Add employee to dictionary
+        return registerEmployee(id, newEmployee);
     }
 
     public String createEmployee(String id, String name, Double grossSalary, int gpa){
         Employee newEmployee = new Intern(id, name, grossSalary, gpa);
-        employeeList.put(newEmployee.getId(), newEmployee);
         System.out.println(employeeList);
-        return newEmployee.getEmployeeAddedMessage();
+
+        // Add employee to dictionary
+        return registerEmployee(id, newEmployee);
     }
 
     public String removeEmployee(String id){
         String message = "";
         if (employeeList.containsKey(id)){
-            if (employeeList.get(id) instanceof Manager){
+            // Remove degree from count if necessary
+            if ((employeeList.get(id) instanceof Manager) || (employeeList.get(id) instanceof Director)){
                 Manager manager = (Manager) employeeList.get(id);
                 String degree = manager.getEducationDegree();
-                if (actualMap.get(degree) == 1){
-                    actualMap.remove(degree);
-                    employeeList.remove(id);
-                }
-                else{
-                    int counter =  actualMap.get(degree);
-                    counter -= 1;
-                    actualMap.put(degree, counter);
-                }
-            }
-            if (employeeList.get(id) instanceof Director){
-                Director manager = (Director) employeeList.get(id);
-                String degree = manager.getEducationDegree();
-                if (actualMap.get(degree) == 1){
-                    actualMap.remove(degree);
-                    employeeList.remove(id);
-                }
-                else{
-                    int counter =  actualMap.get(degree);
-                    counter -= 1;
-                    actualMap.put(degree, counter);
-                }
+                decrementDegreeCount(degree, id);
             }
             message = "Employee " + id + " was successfully removed.";
         }
@@ -170,6 +131,33 @@ public class Company{
 
    }
 
+    public void incrementDegreeCount(String degree) {
+        if (degreeCountMap.containsKey(degree)) {
+            int counter = degreeCountMap.get(degree);
+            counter++;
+            degreeCountMap.put(degree, counter);
+        } else {
+            degreeCountMap.put(degree, 1);
+        }
+    }
+    
+    public void decrementDegreeCount(String degree, String id) {
+        if (degreeCountMap.get(degree) == 1){
+            degreeCountMap.remove(degree);
+            employeeList.remove(id);
+        }
+        else{
+            int counter =  degreeCountMap.get(degree);
+            counter--;
+            degreeCountMap.put(degree, counter);
+        }
+    }
+    
+    private String registerEmployee(String id, Employee newEmployee){
+        employeeList.put(newEmployee.getId(), newEmployee);
+        return "Employee "+ id + " was registered successfully.";
+    }
+   
     public String updateInternGPA(String id, int gpa){
         Employee employee = employeeList.get(id);
         Intern intern = (Intern) employee;
@@ -182,7 +170,6 @@ public class Company{
         createEmployee(id, name, grossSalary, gpa);
 
         return "Employee " + id + " was updated successfully";
-
     }
 
 
@@ -296,6 +283,6 @@ public class Company{
     }
 
     public Map<String, Integer> mapEachDegree(){
-        return actualMap;
+        return degreeCountMap;
     }
 }

@@ -28,7 +28,6 @@ public class Employee{
 
 
 
-
     // Employee class Getters
     public String getId(){
         return id;
@@ -61,6 +60,9 @@ public class Employee{
         return message;
     }
 
+
+
+
     // Employee class setters
     public void setName(String newName){
         name = newName;
@@ -70,6 +72,9 @@ public class Employee{
         this.baseSalary = newBaseSalary;
         calculateGross(baseSalary);
     }
+
+
+
 
     // Calculating Methods
     public double calculateNet(double grossSalary){
