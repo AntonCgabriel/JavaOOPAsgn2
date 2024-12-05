@@ -2,14 +2,14 @@
 
 public class Manager extends Employee{
     protected String educationDegree;
-    protected double bonus;
+    protected double bonusRatio;
 
     public Manager(String id, String name, double baseSalary, String educationDegree) {
         super(id, name, baseSalary);
         this.educationDegree = educationDegree;
         this.baseSalary = truncate(baseSalary);
-        bonus = calculateBonusRatio(educationDegree);
-        grossSalary = calculateGross(this.baseSalary, bonus);
+        bonusRatio = calculateBonusRatio(educationDegree);
+        grossSalary = calculateGross(this.baseSalary, bonusRatio);
         this.netSalary = calculateNet(grossSalary);
     }
 

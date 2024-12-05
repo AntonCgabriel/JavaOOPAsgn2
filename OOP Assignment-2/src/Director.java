@@ -8,8 +8,8 @@ public class Director extends Manager {
         this.department = department;
         int bossBonus = 5000;
         this.baseSalary = truncate(baseSalary);
-        bonus = calculateBonusRatio(educationDegree);
-        grossSalary = this.baseSalary + ((this.baseSalary * bonus) + bossBonus);
+        bonusRatio = calculateBonusRatio(educationDegree);
+        grossSalary = this.baseSalary + ((this.baseSalary * bonusRatio) + bossBonus);
 
         if(grossSalary < 30000){
             netSalary = grossSalary - (grossSalary * 0.1);
