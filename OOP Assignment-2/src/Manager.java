@@ -8,8 +8,16 @@ public class Manager extends Employee{
         this.educationDegree = educationDegree;
         this.baseSalary = truncate(baseSalary);
         bonusRatio = calculateBonusRatio(educationDegree);
-        grossSalary = calculateGross(this.baseSalary, bonusRatio);
+        grossSalary = calculateGross(this.baseSalary);
         this.netSalary = calculateNet(grossSalary);
+    }
+
+    @Override
+    public double calculateGross(double base) {
+        double bonusAmount = Math.floor(base * bonusRatio * 100) / 100;
+        // Truncate gross salary to 2 decimal places
+        double gross = Math.floor((base + bonusAmount) * 100) / 100;
+        return gross;
     }
 
     // Manager Getters
@@ -37,11 +45,8 @@ public class Manager extends Employee{
             case "PhD" -> 0.35;
             default -> 0;
         };
+
     }
 
-    @Override
-    public double calculateGross(double base, double bonus){
-        double gross = base + (base * bonus);
-        return gross;
-    }
+
 }

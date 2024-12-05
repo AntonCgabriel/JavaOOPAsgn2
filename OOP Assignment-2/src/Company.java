@@ -1,11 +1,11 @@
 // package assignment3;
-
+import java.util.LinkedHashMap;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Company{
 
-    HashMap<String, Employee> employeeList = new HashMap<>();
+    LinkedHashMap<String, Employee> employeeList = new LinkedHashMap<>();
     Map<String, Integer> actualMap = new HashMap<>();
 
     public String createEmployee(String id, String name, Double baseSalary){
@@ -98,7 +98,7 @@ public class Company{
     public String printEmployee(String id){
         Employee selectedEmployee = employeeList.get(id);
         String info = selectedEmployee.getEmployeeInfo(id);
-        // System.out.print(info);
+        System.out.print(info);
         return info;
     }
 
@@ -155,13 +155,15 @@ public class Company{
             allEmployeesInfo = allEmployeesInfo + employeeInfo + EOL;
         }
         System.out.print(allEmployeesInfo);
-        return "test5";
+        return allEmployeesInfo;
     }
 
 
     public double getNetSalary(String id){
         Employee selectedEmployee = employeeList.get(id);
-        return selectedEmployee.getNetSalary();
+        Double netSalary = selectedEmployee.getNetSalary();
+        System.out.print(netSalary);
+        return netSalary;
 
    }
 

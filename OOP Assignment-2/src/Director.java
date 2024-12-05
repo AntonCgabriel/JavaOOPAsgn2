@@ -8,21 +8,31 @@ public class Director extends Manager {
         this.department = department;
         this.baseSalary = truncate(baseSalary);
         bonusRatio = calculateBonusRatio(educationDegree);
-        grossSalary = calculateGross(baseSalary, bonusRatio);
+        grossSalary = calculateGross(baseSalary);
 
-        if(grossSalary < 30000){
-            netSalary = grossSalary - (grossSalary * 0.1);
-        } else if (grossSalary <= 50000) {
-            netSalary = grossSalary - (grossSalary * 0.2);
-        } else {
-            netSalary = grossSalary - (30000 * 0.2) - ((grossSalary - 30000) * 0.4);
-        }
+        //if(grossSalary < 30000){
+        //    netSalary = grossSalary - (grossSalary * 0.1);
+        //} else if (grossSalary <= 50000) {
+        //    netSalary = grossSalary - (grossSalary * 0.2);
+        //} else {
+        //    netSalary = grossSalary - (30000 * 0.2) - ((grossSalary - 30000) * 0.4);
+        //}
     }
+
+    @Override
+    public double calculateGross(double base) {
+        double bonusAmount = base * bonusRatio;
+        double gross = base + bonusAmount + 5000;
+        gross = Math.round(gross * 100.0) / 100.0;
+        return gross;
+    }
+
 
     public String setDepartment(String department){
         this.department = department;
         return "hold";
     }
+
 
     @Override
     public String getEmployeeInfo(String id){
@@ -30,10 +40,6 @@ public class Director extends Manager {
         return employeeInfo;
     }
 
-    @Override
-    public double calculateGross(double base, double bonus){
-        double gross = base + (base * bonus) + 5000;
-        return gross;
-    }
+
 
 }
