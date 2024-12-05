@@ -10,13 +10,13 @@ public class Director extends Manager {
         bonusRatio = calculateBonusRatio(educationDegree);
         grossSalary = calculateGross(baseSalary);
 
-        //if(grossSalary < 30000){
-        //    netSalary = grossSalary - (grossSalary * 0.1);
-        //} else if (grossSalary <= 50000) {
-        //    netSalary = grossSalary - (grossSalary * 0.2);
-        //} else {
-        //    netSalary = grossSalary - (30000 * 0.2) - ((grossSalary - 30000) * 0.4);
-        //}
+        if(grossSalary < 30000){
+            netSalary = grossSalary - (grossSalary * 0.1);
+        } else if (grossSalary <= 50000) {
+            netSalary = grossSalary - (grossSalary * 0.2);
+        } else {
+            netSalary = grossSalary - (30000 * 0.2) - ((grossSalary - 30000) * 0.4);
+        }
     }
 
     @Override
