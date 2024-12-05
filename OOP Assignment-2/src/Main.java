@@ -15,5 +15,6 @@ public class Main {
         myCompany.printEmployee("Emp1");
         myCompany.updateManagerDegree("Emp1", "PhD");
         myCompany.printEmployee("Emp1");
+        myCompany.printEmployee("Emp2");
     }
 }

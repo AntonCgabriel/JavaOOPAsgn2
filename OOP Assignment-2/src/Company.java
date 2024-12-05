@@ -1,4 +1,4 @@
-// package assignment3;
+package assignment3;
 import java.util.LinkedHashMap;
 import java.util.HashMap;
 import java.util.Map;
@@ -114,7 +114,7 @@ public class Company{
     public String updateGrossSalary(String id, Double newGrossSalary){
         Employee selectedEmployee = employeeList.get(id);
         selectedEmployee.setGrossSalary(newGrossSalary);
-        String test = "Holding2";
+        String test = "Employee " + id + " was updated successfully";
         return test;
     }
 
@@ -169,16 +169,51 @@ public class Company{
    }
 
     public String updateInternGPA(String id, int gpa){
-        String test = "Holdin3";
+        Employee employee = employeeList.get(id);
+        Intern intern = (Intern) employee;
+        Double base = intern.baseSalary;
+
+        String name = employee.getName();
+        Double grossSalary = employee.getGrossSalary();
+
+        removeEmployee(id);
+        createEmployee(id, name, grossSalary, gpa);
+
         return "Employee " + id + " was updated successfully";
 
     }
 
 
-    public String updateManagerDegree(String id, String degree){
+
+        public String updateManagerDegree(String id, String degree){
         Employee employee = employeeList.get(id);
-        Manager manager = (Manager) employee;
-        manager.setDegree(degree);
+        if (employeeList.get(id) instanceof Director){
+
+            Director director = (Director) employee;
+            director.setDegree(degree);
+
+            String name = employee.getName();
+            Double grossSalary = employee.getGrossSalary();
+            String department = director.getDepartment();
+
+            removeEmployee(id);
+            createEmployee(id, name, grossSalary, degree, department);
+
+
+            
+        }
+        else if (employeeList.get(id) instanceof Manager){
+            Manager manager = (Manager) employee;
+            manager.setDegree(degree);
+
+            String name = employee.getName();
+            Double grossSalary = employee.getGrossSalary();
+            
+            removeEmployee(id);
+            createEmployee(id, name, grossSalary, degree);
+            System.out.print("Arselbajsare");
+        }
+
         String test = "Employee " + id + " was updated successfully";
         return test;
 
@@ -186,8 +221,8 @@ public class Company{
 
     public String updateDirectorDept(String id, String faculty){
         Employee employee = employeeList.get(id);
-        Director manager = (Director) employee;
-        manager.setDegree(faculty);
+        Director director = (Director) employee;
+        director.setDepartment(faculty);
         String test = "Employee " + id + " was updated successfully";
         return test;
 

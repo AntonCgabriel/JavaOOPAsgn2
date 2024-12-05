@@ -1,4 +1,4 @@
-// package assignment3;
+package assignment3;
 import java.text.DecimalFormat;
 
 public class Employee{
@@ -23,7 +23,7 @@ public class Employee{
         this.netSalary = calculateNet(this.baseSalary);
         return grossSalary;
     }
-
+//lala
 
 
 
@@ -67,7 +67,8 @@ public class Employee{
     }
 
     public void setGrossSalary(Double newBaseSalary){
-        baseSalary = newBaseSalary;
+        this.baseSalary = newBaseSalary;
+        calculateGross(baseSalary);
     }
 
     // Calculating Methods

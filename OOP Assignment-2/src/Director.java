@@ -1,4 +1,4 @@
-// package assignment3;
+package assignment3;
 
 public class Director extends Manager {
     private String department;
@@ -21,10 +21,14 @@ public class Director extends Manager {
 
     @Override
     public double calculateGross(double base) {
-        double bonusAmount = base * bonusRatio;
-        double gross = base + bonusAmount + 5000;
-        gross = Math.round(gross * 100.0) / 100.0;
-        return gross;
+    double bonusAmount = base * bonusRatio;
+    //System.out.print("-------" + bonusRatio + "--------");
+    double gross = Math.floor(((base + bonusAmount) + 5000) * 100) / 100;
+    System.out.print("-------" + gross + "--------");
+    return gross;
+}
+    public String getDepartment(){
+        return department;
     }
 
 
