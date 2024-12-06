@@ -9,6 +9,8 @@ public class Company{
     LinkedHashMap<String, Employee> employeeList = new LinkedHashMap<>();
     Map<String, Integer> degreeCountMap = new HashMap<>();
 
+
+    // Methods for Creating and removing objects within Company object
     public String createEmployee(String id, String name, Double baseSalary){
         Employee newEmployee = new Employee(id, name, baseSalary);
         employeeList.put(newEmployee.getId(), newEmployee);
@@ -59,15 +61,12 @@ public class Company{
         return message;
     }
 
-    public String printEmployee(String id){
-        Employee selectedEmployee = employeeList.get(id);
-        String info = selectedEmployee.getEmployeeInfo(id);
-        System.out.print(info);
-        return info;
+    public Map<String, Integer> mapEachDegree(){
+        return degreeCountMap;
     }
 
 
-
+    // Setters
     public String updateEmployeeName(String id, String newName){
         Employee selectedEmployee = employeeList.get(id);
         selectedEmployee.setName(newName);
@@ -77,34 +76,69 @@ public class Company{
     public String updateGrossSalary(String id, Double newGrossSalary){
         Employee selectedEmployee = employeeList.get(id);
         selectedEmployee.setGrossSalary(newGrossSalary);
-        String test = "Employee " + id + " was updated successfully";
-        return test;
+        String message = "Employee " + id + " was updated successfully";
+        return message;
     }
 
-    public void getTotalGrossSalary(){
-        double totalGrossSalary = 0;
+    public String updateInternGPA(String id, int gpa){
+        Employee employee = employeeList.get(id);
+        Intern intern = (Intern) employee;
+        Double base = intern.baseSalary;
 
-        // Iterates over all entries in the map and runs function for each entry
-        for (Map.Entry<String, Employee> entry : employeeList.entrySet()){
-            Employee employee = entry.getValue();
+        String name = employee.getName();
+        Double grossSalary = employee.getGrossSalary();
 
-            totalGrossSalary += employee.getGrossSalary();
-        }
-        System.out.print(totalGrossSalary);
+        removeEmployee(id);
+        createEmployee(id, name, grossSalary, gpa);
+
+        return "Employee " + id + " was updated successfully";
     }
 
-    public double getTotalNetSalary(){
-        double totalNetSalary = 0;
+    public String updateManagerDegree(String id, String degree){
+        Employee employee = employeeList.get(id);
+        if (employeeList.get(id) instanceof Director){
 
-        // Iterates over all entries in the map and runs function for each entry
-        for (Map.Entry<String, Employee> entry : employeeList.entrySet()){
-            Employee employee = entry.getValue();
+            Director director = (Director) employee;
+            director.setDegree(degree);
 
-            totalNetSalary += employee.getNetSalary();
+            String name = employee.getName();
+            Double grossSalary = employee.getGrossSalary();
+            String department = director.getDepartment();
+
+            removeEmployee(id);
+            createEmployee(id, name, grossSalary, degree, department);
+
         }
-        System.out.print(totalNetSalary);
-        
-        return totalNetSalary;
+        else if (employeeList.get(id) instanceof Manager){
+            Manager manager = (Manager) employee;
+            manager.setDegree(degree);
+
+            String name = employee.getName();
+            Double grossSalary = employee.getGrossSalary();
+
+            removeEmployee(id);
+            createEmployee(id, name, grossSalary, degree);
+        }
+
+        String message = "Employee " + id + " was updated successfully";
+        return message;
+    }
+
+    public String updateDirectorDept(String id, String faculty){
+        Employee employee = employeeList.get(id);
+        Director director = (Director) employee;
+        director.setDepartment(faculty);
+        String message = "Employee " + id + " was updated successfully";
+        return message;
+
+    }
+
+
+    // Getters
+    public String printEmployee(String id){
+        Employee selectedEmployee = employeeList.get(id);
+        String info = selectedEmployee.getEmployeeInfo(id);
+        return info;
     }
 
     public String printAllEmployees(){
@@ -118,20 +152,90 @@ public class Company{
             String employeeInfo = employee.getEmployeeInfo(id);
             allEmployeesInfo = allEmployeesInfo + employeeInfo + EOL;
         }
-        System.out.print(allEmployeesInfo);
         return allEmployeesInfo;
     }
 
+    public void getTotalGrossSalary(){
+        double totalGrossSalary = 0;
 
+        // Iterates over all entries in the map and runs function for each entry
+        for (Map.Entry<String, Employee> entry : employeeList.entrySet()){
+            Employee employee = entry.getValue();
+
+            totalGrossSalary += employee.getGrossSalary();
+        }
+    }
+
+    public double getTotalNetSalary(){
+        double totalNetSalary = 0;
+
+        // Iterates over all entries in the map and runs function for each entry
+        for (Map.Entry<String, Employee> entry : employeeList.entrySet()){
+            Employee employee = entry.getValue();
+
+            totalNetSalary += employee.getNetSalary();
+        }
+
+        return totalNetSalary;
+    }
+
+    public String printSortedEmployees(){
+        String totalEmployeeInfo = "Employees sorted by gross salary (ascending order):\n";
+        Map<String, String> salaryMessage = new HashMap<>();
+        ArrayList<String> salaries = new ArrayList<String>();
+
+        for (String i: employeeList.keySet()){
+            if (employeeList.get(i) instanceof Manager){
+                Manager manager = (Manager) employeeList.get(i);
+                String employeeInfo = manager.getEmployeeInfo(i);
+                String employeeSalarie = manager.getRealGrossSalary();
+                salaryMessage.put(employeeSalarie, employeeInfo);
+                salaries.add(employeeSalarie);
+            }
+
+            else if (employeeList.get(i) instanceof Director){
+                Director director = (Director) employeeList.get(i);
+                String employeeInfo = director.getEmployeeInfo(i);
+                String employeeSalarie = director.getRealGrossSalary();
+                salaryMessage.put(employeeSalarie, employeeInfo);
+                salaries.add(employeeSalarie);
+            }
+
+            else if (employeeList.get(i) instanceof Intern){
+                Intern intern = (Intern) employeeList.get(i);
+                String employeeInfo = intern.getEmployeeInfo(i);
+                String employeeSalarie = intern.getRealGrossSalary();
+                salaryMessage.put(employeeSalarie, employeeInfo);
+                salaries.add(employeeSalarie);
+            }
+            else {
+                String employeeInfo = employeeList.get(i).getEmployeeInfo(i);
+                String employeeSalarie = employeeList.get(i).getRealGrossSalary();
+                salaryMessage.put(employeeSalarie, employeeInfo);
+                salaries.add(employeeSalarie);
+            }
+        }
+
+        Collections.sort(salaries);
+
+        for (String i: salaries){
+            String info = salaryMessage.get(i) + "\n";
+            totalEmployeeInfo += info;
+        }
+        return totalEmployeeInfo;
+    }
+
+    // Overloading
     public double getNetSalary(String id){
         Employee selectedEmployee = employeeList.get(id);
         Double netSalary = selectedEmployee.getNetSalary();
-        System.out.print(netSalary);
         return netSalary;
 
    }
 
-    public void incrementDegreeCount(String degree) {
+
+   // Helper methods
+    private void incrementDegreeCount(String degree) {
         if (degreeCountMap.containsKey(degree)) {
             int counter = degreeCountMap.get(degree);
             counter++;
@@ -141,7 +245,7 @@ public class Company{
         }
     }
     
-    public void decrementDegreeCount(String degree, String id) {
+    private void decrementDegreeCount(String degree, String id) {
         if (degreeCountMap.get(degree) == 1){
             degreeCountMap.remove(degree);
             employeeList.remove(id);
@@ -157,66 +261,9 @@ public class Company{
         employeeList.put(newEmployee.getId(), newEmployee);
         return "Employee "+ id + " was registered successfully.";
     }
-   
-    public String updateInternGPA(String id, int gpa){
-        Employee employee = employeeList.get(id);
-        Intern intern = (Intern) employee;
-        Double base = intern.baseSalary;
-
-        String name = employee.getName();
-        Double grossSalary = employee.getGrossSalary();
-
-        removeEmployee(id);
-        createEmployee(id, name, grossSalary, gpa);
-
-        return "Employee " + id + " was updated successfully";
-    }
 
 
-
-        public String updateManagerDegree(String id, String degree){
-        Employee employee = employeeList.get(id);
-        if (employeeList.get(id) instanceof Director){
-
-            Director director = (Director) employee;
-            director.setDegree(degree);
-
-            String name = employee.getName();
-            Double grossSalary = employee.getGrossSalary();
-            String department = director.getDepartment();
-
-            removeEmployee(id);
-            createEmployee(id, name, grossSalary, degree, department);
-
-
-            
-        }
-        else if (employeeList.get(id) instanceof Manager){
-            Manager manager = (Manager) employee;
-            manager.setDegree(degree);
-
-            String name = employee.getName();
-            Double grossSalary = employee.getGrossSalary();
-            
-            removeEmployee(id);
-            createEmployee(id, name, grossSalary, degree);
-            System.out.print("Arselbajsare");
-        }
-
-        String test = "Employee " + id + " was updated successfully";
-        return test;
-
-    }
-
-    public String updateDirectorDept(String id, String faculty){
-        Employee employee = employeeList.get(id);
-        Director director = (Director) employee;
-        director.setDepartment(faculty);
-        String test = "Employee " + id + " was updated successfully";
-        return test;
-
-    }
-
+    // Placeholder to upcoming methods
     public String promoteToManager(String id, String degree){
         String test = "Holding6";
         return test;
@@ -230,59 +277,5 @@ public class Company{
     public String promoteToIntern(String id, int gpa){
         String test = "Holding8";
         return test;
-    }
-
-    public String printSortedEmployees(){
-        String totalEmployeeInfo = "Employees sorted by gross salary (ascending order):\n";
-        System.out.println("1" + totalEmployeeInfo);
-        Map<String, String> salaryMessage = new HashMap<>();
-        ArrayList<String> salaries = new ArrayList<String>();
-
-        for (String i: employeeList.keySet()){
-            if (employeeList.get(i) instanceof Manager){
-                Manager manager = (Manager) employeeList.get(i);
-                String employeeInfo = manager.getEmployeeInfo(i);
-                String employeeSalarie = manager.getRealGrossSalary();
-                salaryMessage.put(employeeSalarie, employeeInfo);
-                salaries.add(employeeSalarie);
-            }
-        
-            else if (employeeList.get(i) instanceof Director){
-                Director director = (Director) employeeList.get(i);
-                String employeeInfo = director.getEmployeeInfo(i);               
-                String employeeSalarie = director.getRealGrossSalary();
-                salaryMessage.put(employeeSalarie, employeeInfo);
-                salaries.add(employeeSalarie);
-            }
-
-            else if (employeeList.get(i) instanceof Intern){
-                Intern intern = (Intern) employeeList.get(i);
-                String employeeInfo = intern.getEmployeeInfo(i);               
-                String employeeSalarie = intern.getRealGrossSalary();
-                salaryMessage.put(employeeSalarie, employeeInfo);
-                salaries.add(employeeSalarie);
-            }
-            else {
-                String employeeInfo = employeeList.get(i).getEmployeeInfo(i);
-                String employeeSalarie = employeeList.get(i).getRealGrossSalary();
-                salaryMessage.put(employeeSalarie, employeeInfo);
-                salaries.add(employeeSalarie);
-            }
-        }
-        System.out.println(salaries);
-
-        Collections.sort(salaries);
-        System.out.println(salaries);
-
-        for (String i: salaries){
-            String info = salaryMessage.get(i) + "\n";
-            totalEmployeeInfo += info;
-        }
-        System.out.println("2" + totalEmployeeInfo);
-        return totalEmployeeInfo;
-    }
-
-    public Map<String, Integer> mapEachDegree(){
-        return degreeCountMap;
     }
 }

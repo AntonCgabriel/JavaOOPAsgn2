@@ -23,10 +23,6 @@ public class Employee{
         this.netSalary = calculateNet(this.baseSalary);
         return grossSalary;
     }
-//lala
-
-
-
 
     // Employee class Getters
     public String getId(){
@@ -61,8 +57,6 @@ public class Employee{
     }
 
 
-
-
     // Employee class setters
     public void setName(String newName){
         name = newName;
@@ -74,10 +68,8 @@ public class Employee{
     }
 
 
-
-
     // Calculating Methods
-    public double calculateNet(double grossSalary){
+    protected double calculateNet(double grossSalary){
         return truncate(grossSalary - (grossSalary * 0.1));
     }
 
@@ -86,7 +78,7 @@ public class Employee{
         return truncatedValue;
     }
 
-    public String getRealGrossSalary(){
+    protected String getRealGrossSalary(){
         String salary = df.format(grossSalary);
         return salary;
     }
