@@ -48,5 +48,9 @@ public class Manager extends Employee{
         return gross;
     }
 
+    @Override
+    public String getRealGrossSalary() {
+    return df.format(grossSalary);
+    }
 
 }

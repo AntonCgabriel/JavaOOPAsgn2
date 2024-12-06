@@ -44,9 +44,7 @@ public class Director extends Manager {
     @Override
     public double calculateGross(double base) {
         double bonusAmount = base * bonusRatio;
-        //System.out.print("-------" + bonusRatio + "--------");
         double gross = Math.floor(((base + bonusAmount) + directorBonus) * 100) / 100;
-        System.out.print("-------" + gross + "--------");
         return gross;
     }
     public String getDepartment(){
@@ -56,6 +54,11 @@ public class Director extends Manager {
     public String setDepartment(String department){
         this.department = department;
         return "hold";
+    }
+
+    @Override
+    public String getRealGrossSalary() {
+    return df.format(grossSalary);
     }
 
 }
