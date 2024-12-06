@@ -138,6 +138,7 @@ public class Company{
     public String printEmployee(String id){
         Employee selectedEmployee = employeeList.get(id);
         String info = selectedEmployee.getEmployeeInfo(id);
+        System.out.print(info);
         return info;
     }
 
@@ -152,6 +153,7 @@ public class Company{
             String employeeInfo = employee.getEmployeeInfo(id);
             allEmployeesInfo = allEmployeesInfo + employeeInfo + EOL;
         }
+        System.out.print(allEmployeesInfo);
         return allEmployeesInfo;
     }
 
@@ -265,17 +267,63 @@ public class Company{
 
     // Placeholder to upcoming methods
     public String promoteToManager(String id, String degree){
-        String test = "Holding6";
-        return test;
-    }
+        String promoteManagerMessage = id + " promoted successfully to Manager.";
+        Employee employee = employeeList.get(id);
+        if (employeeList.get(id) instanceof Employee){
+            String name = employee.getName();
+            Double baseSalary = employee.baseSalary;
+            removeEmployee(id);
+            createEmployee(id, name, baseSalary, degree);
+        }
 
+        else if (employeeList.get(id) instanceof Intern) {
+            String name = employee.getName();
+            Double baseSalary = employee.baseSalary;
+            removeEmployee(id);
+            createEmployee(id, name, baseSalary, degree);
+        }
+        return promoteManagerMessage;
+    }
     public String promoteToDirector(String id, String degree, String faculty){
-        String test = "Holding7";
-        return test;
+        String promoteDirectorMessage = id + " promoted successfully to Manager.";
+        Employee employee = employeeList.get(id);
+
+        if (employeeList.get(id) instanceof Employee){
+            String name = employee.getName();
+            Double baseSalary = employee.baseSalary;
+            removeEmployee(id);
+            createEmployee(id, name, baseSalary, degree, faculty);
+        }
+
+        else if (employeeList.get(id) instanceof Intern) {
+            String name = employee.getName();
+            Double baseSalary = employee.baseSalary;
+            removeEmployee(id);
+            createEmployee(id, name, baseSalary, degree, faculty);
+        }
+
+        else if (employeeList.get(id) instanceof Manager) {
+            Manager manager = (Manager) employee;
+            String name = manager.getName();
+            Double baseSalary = manager.baseSalary;
+            degree = manager.getEducationDegree();
+            removeEmployee(id);
+            createEmployee(id, name, baseSalary, degree, faculty);
+        }
+        return promoteDirectorMessage;
     }
 
     public String promoteToIntern(String id, int gpa){
-        String test = "Holding8";
-        return test;
+        String promoteInternMessage = id + " promoted successfully to Intern.";
+        Employee employee = employeeList.get(id);
+
+        if (employeeList.get(id) instanceof Employee){
+            String name = employee.getName();
+            Double baseSalary = employee.baseSalary;
+            removeEmployee(id);
+            createEmployee(id, name, baseSalary, gpa);
+        }
+
+        return promoteInternMessage;
     }
 }
