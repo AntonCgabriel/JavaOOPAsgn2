@@ -1,4 +1,4 @@
-// package assignment3;
+package assignment3;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
