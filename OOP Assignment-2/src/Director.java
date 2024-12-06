@@ -22,9 +22,7 @@ public class Director extends Manager {
     @Override
     public double calculateGross(double base) {
     double bonusAmount = base * bonusRatio;
-    //System.out.print("-------" + bonusRatio + "--------");
     double gross = Math.floor(((base + bonusAmount) + 5000) * 100) / 100;
-    System.out.print("-------" + gross + "--------");
     return gross;
 }
     public String getDepartment(){
@@ -43,7 +41,10 @@ public class Director extends Manager {
         String employeeInfo = (educationDegree + " " + name + "'s gross salary is " + df.format(grossSalary) + " SEK per month. Dept: " + department);
         return employeeInfo;
     }
-
+    @Override
+    public String getRealGrossSalary() {
+    return df.format(grossSalary);
+    }
 
 
 }

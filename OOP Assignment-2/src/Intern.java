@@ -1,4 +1,4 @@
-// package assignment3;
+//package assignment3;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -7,8 +7,8 @@ public class Intern extends Employee {
     double gpaSalary;
     int gpa;
 
-    public Intern(String id, String name, Double grossSalary, int gpa) {
-        super(id, name, grossSalary);
+    public Intern(String id, String name, Double baseSalary, int gpa) {
+        super(id, name, baseSalary);
         this.gpa = gpa;
         setSalary();
     }

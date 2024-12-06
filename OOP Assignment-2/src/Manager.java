@@ -1,4 +1,4 @@
-// package assignment3;
+//package assignment3;
 
 public class Manager extends Employee{
     protected String educationDegree;
@@ -46,6 +46,10 @@ public class Manager extends Employee{
             default -> 0;
         };
 
+    }
+    @Override
+    public String getRealGrossSalary() {
+    return df.format(grossSalary);
     }
 
 

@@ -1,4 +1,4 @@
-// package assignment3;
+//package assignment3;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,9 +12,8 @@ public class Main {
         myCompany.createEmployee("Emp7", "Ricky", 23500.00);                            // G: 23500.00; N: 21150.00
         myCompany.createEmployee("Emp8", "Damon", 22100.00);
 
-        myCompany.printEmployee("Emp1");
-        myCompany.updateManagerDegree("Emp1", "PhD");
-        myCompany.printEmployee("Emp1");
-        myCompany.printEmployee("Emp2");
+        myCompany.printEmployee("Emp8");
+        myCompany.promoteToIntern("Emp8", 9);
+        myCompany.printEmployee("Emp8");
     }
 }
