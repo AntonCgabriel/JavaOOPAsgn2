@@ -12,14 +12,6 @@ public class Manager extends Employee{
         this.netSalary = calculateNet(grossSalary);
     }
 
-    @Override
-    public double calculateGross(double base) {
-        double bonusAmount = Math.floor(base * bonusRatio * 100) / 100;
-        // Truncate gross salary to 2 decimal places
-        double gross = Math.floor((base + bonusAmount) * 100) / 100;
-        return gross;
-    }
-
     // Manager Getters
     @Override
     public String getEmployeeInfo(String id){
@@ -38,7 +30,7 @@ public class Manager extends Employee{
     }
 
     // Calculating Methods
-    public double calculateBonusRatio(String educationDegree) {
+    protected double calculateBonusRatio(String educationDegree) {
         return switch (educationDegree) {
             case "BSc" -> 0.1;
             case "MSc" -> 0.2;
@@ -50,6 +42,14 @@ public class Manager extends Employee{
     @Override
     public String getRealGrossSalary() {
     return df.format(grossSalary);
+    }
+
+    @Override
+    public double calculateGross(double base) {
+        double bonusAmount = Math.floor(base * bonusRatio * 100) / 100;
+        // Truncate gross salary to 2 decimal places
+        double gross = Math.floor((base + bonusAmount) * 100) / 100;
+        return gross;
     }
 
 
