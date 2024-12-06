@@ -16,7 +16,7 @@ Per:
 See an overview of all employees’ information (1.5 and 1.6)
 Total paid in net salaries to see my expenses with employees
 Retrieve employees sorted by gross salary
-
+Promotion of employees
 
 Robert:
 structure of the company class
