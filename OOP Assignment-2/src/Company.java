@@ -108,8 +108,7 @@ public class Company{
             removeEmployee(id);
             createEmployee(id, name, grossSalary, degree, department);
 
-        }
-        else if (employeeList.get(id) instanceof Manager){
+        } else if (employeeList.get(id) instanceof Manager){
             Manager manager = (Manager) employee;
             manager.setDegree(degree);
 
@@ -193,24 +192,19 @@ public class Company{
                 String employeeSalarie = manager.getRealGrossSalary();
                 salaryMessage.put(employeeSalarie, employeeInfo);
                 salaries.add(employeeSalarie);
-            }
-
-            else if (employeeList.get(i) instanceof Director){
+            } else if (employeeList.get(i) instanceof Director){
                 Director director = (Director) employeeList.get(i);
                 String employeeInfo = director.getEmployeeInfo(i);
                 String employeeSalarie = director.getRealGrossSalary();
                 salaryMessage.put(employeeSalarie, employeeInfo);
                 salaries.add(employeeSalarie);
-            }
-
-            else if (employeeList.get(i) instanceof Intern){
+            } else if (employeeList.get(i) instanceof Intern){
                 Intern intern = (Intern) employeeList.get(i);
                 String employeeInfo = intern.getEmployeeInfo(i);
                 String employeeSalarie = intern.getRealGrossSalary();
                 salaryMessage.put(employeeSalarie, employeeInfo);
                 salaries.add(employeeSalarie);
-            }
-            else {
+            } else {
                 String employeeInfo = employeeList.get(i).getEmployeeInfo(i);
                 String employeeSalarie = employeeList.get(i).getRealGrossSalary();
                 salaryMessage.put(employeeSalarie, employeeInfo);
@@ -251,8 +245,7 @@ public class Company{
         if (degreeCountMap.get(degree) == 1){
             degreeCountMap.remove(degree);
             employeeList.remove(id);
-        }
-        else{
+        } else{
             int counter =  degreeCountMap.get(degree);
             counter--;
             degreeCountMap.put(degree, counter);
@@ -265,18 +258,11 @@ public class Company{
     }
 
 
-    // Placeholder to upcoming methods
+    // Promotion methods
     public String promoteToManager(String id, String degree){
         String promoteManagerMessage = id + " promoted successfully to Manager.";
         Employee employee = employeeList.get(id);
-        if (employeeList.get(id) instanceof Employee){
-            String name = employee.getName();
-            Double baseSalary = employee.baseSalary;
-            removeEmployee(id);
-            createEmployee(id, name, baseSalary, degree);
-        }
-
-        else if (employeeList.get(id) instanceof Intern) {
+        if ((employeeList.get(id) instanceof Employee) || (employeeList.get(id) instanceof Intern)){
             String name = employee.getName();
             Double baseSalary = employee.baseSalary;
             removeEmployee(id);
@@ -288,21 +274,12 @@ public class Company{
         String promoteDirectorMessage = id + " promoted successfully to Manager.";
         Employee employee = employeeList.get(id);
 
-        if (employeeList.get(id) instanceof Employee){
+        if ((employeeList.get(id) instanceof Employee) || (employeeList.get(id) instanceof Intern)){
             String name = employee.getName();
             Double baseSalary = employee.baseSalary;
             removeEmployee(id);
             createEmployee(id, name, baseSalary, degree, faculty);
-        }
-
-        else if (employeeList.get(id) instanceof Intern) {
-            String name = employee.getName();
-            Double baseSalary = employee.baseSalary;
-            removeEmployee(id);
-            createEmployee(id, name, baseSalary, degree, faculty);
-        }
-
-        else if (employeeList.get(id) instanceof Manager) {
+        } else if (employeeList.get(id) instanceof Manager) {
             Manager manager = (Manager) employee;
             String name = manager.getName();
             Double baseSalary = manager.baseSalary;
@@ -323,7 +300,6 @@ public class Company{
             removeEmployee(id);
             createEmployee(id, name, baseSalary, gpa);
         }
-
         return promoteInternMessage;
     }
 }
